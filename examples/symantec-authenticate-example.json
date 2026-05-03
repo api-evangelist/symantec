@@ -1,0 +1,24 @@
+{
+  "summary": "Authenticate to SEPM",
+  "description": "Example of obtaining a Bearer token from Symantec Endpoint Protection Manager",
+  "request": {
+    "method": "POST",
+    "url": "https://sepm.example.com:8446/sepm/api/v1/identity/authenticate",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "username": "admin",
+      "password": "your-password",
+      "domain": ""
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJzeXNhZG1pbiJ9.example",
+      "tokenExpiry": "2026-05-03T23:00:00.000Z",
+      "refreshToken": "refresh-token-example-value"
+    }
+  }
+}

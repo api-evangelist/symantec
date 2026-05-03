@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/symantec/refs/heads/main/json-schema/symantec-computer-schema.json",
+  "title": "Symantec SEPM Computer",
+  "description": "Schema for a computer (endpoint) record in Symantec Endpoint Protection Manager",
+  "type": "object",
+  "properties": {
+    "uniqueId": {
+      "type": "string",
+      "description": "Unique computer identifier in SEPM"
+    },
+    "computerName": {
+      "type": "string",
+      "description": "Computer hostname"
+    },
+    "domainOrWorkgroup": {
+      "type": "string",
+      "description": "Windows domain or workgroup name"
+    },
+    "ipAddresses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IP addresses assigned to the computer"
+    },
+    "macAddresses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "MAC addresses of network interfaces"
+    },
+    "operatingSystem": {
+      "type": "string",
+      "description": "Operating system name and version"
+    },
+    "agentVersion": {
+      "type": "string",
+      "description": "Symantec Endpoint Protection client version"
+    },
+    "lastScanTime": {
+      "type": "integer",
+      "description": "Unix timestamp of last security scan"
+    },
+    "lastUpdateTime": {
+      "type": "integer",
+      "description": "Unix timestamp of last policy/definition update"
+    },
+    "infected": {
+      "type": "boolean",
+      "description": "Whether the computer has active infections"
+    },
+    "groupId": {
+      "type": "string",
+      "description": "SEPM group the computer belongs to"
+    },
+    "groupName": {
+      "type": "string",
+      "description": "SEPM group name"
+    },
+    "onlineStatus": {
+      "type": "integer",
+      "enum": [0, 1],
+      "description": "Online status: 1=online, 0=offline"
+    }
+  },
+  "required": ["uniqueId", "computerName"]
+}

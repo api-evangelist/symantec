@@ -1,0 +1,37 @@
+{
+  "summary": "List managed computers",
+  "description": "Example of listing computers managed by Symantec Endpoint Protection Manager",
+  "request": {
+    "method": "GET",
+    "url": "https://sepm.example.com:8446/sepm/api/v1/computers?pageSize=25&pageIndex=1",
+    "headers": {
+      "Authorization": "Bearer your-bearer-token-here"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "content": [
+        {
+          "uniqueId": "abcdef1234567890",
+          "computerName": "WORKSTATION-001",
+          "domainOrWorkgroup": "CORP",
+          "ipAddresses": ["192.168.1.101"],
+          "macAddresses": ["00:1A:2B:3C:4D:5E"],
+          "operatingSystem": "Windows 11 Enterprise",
+          "agentVersion": "14.3.9616.9000",
+          "lastScanTime": 1746259200000,
+          "lastUpdateTime": 1746259200000,
+          "infected": false,
+          "groupId": "group123",
+          "groupName": "Default Group",
+          "onlineStatus": 1
+        }
+      ],
+      "number": 1,
+      "size": 25,
+      "totalElements": 1,
+      "totalPages": 1
+    }
+  }
+}

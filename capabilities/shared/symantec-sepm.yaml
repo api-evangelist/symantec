@@ -1,0 +1,200 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Symantec Endpoint Protection Manager API"
+  description: >-
+    Manages Symantec Endpoint Protection Manager (SEPM) including computers,
+    groups, administrators, and API version. Authentication via Bearer token
+    from the identity endpoint.
+  tags:
+    - Broadcom
+    - Computers
+    - Endpoint Protection
+    - Groups
+    - Security Management
+    - SEPM
+    - Symantec
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      SEPM_USERNAME: SEPM_USERNAME
+      SEPM_PASSWORD: SEPM_PASSWORD
+      SEPM_HOST: SEPM_HOST
+
+capability:
+  consumes:
+    - type: http
+      namespace: sepm
+      baseUri: https://{SEPM_HOST}:8446/sepm/api/v1
+      description: "Symantec Endpoint Protection Manager REST API"
+      authentication:
+        type: bearer
+        token: "{{SEPM_BEARER_TOKEN}}"
+      resources:
+        - name: computers
+          path: /computers
+          description: Endpoint computer management
+          operations:
+            - name: list-computers
+              method: GET
+              description: "List Computers"
+              inputParameters:
+                - name: computerName
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by computer name"
+                - name: pageSize
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Results per page (max 1000)"
+                - name: pageIndex
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page number"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: groups
+          path: /groups
+          description: SEPM group management
+          operations:
+            - name: list-groups
+              method: GET
+              description: "List Groups"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: create-group
+              method: POST
+              description: "Create Group"
+              inputParameters:
+                - name: name
+                  in: body
+                  type: string
+                  required: true
+                  description: "Group name"
+                - name: description
+                  in: body
+                  type: string
+                  required: false
+                  description: "Group description"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: administrators
+          path: /admin/admins
+          description: SEPM administrator management
+          operations:
+            - name: list-administrators
+              method: GET
+              description: "List Administrators"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: sepm-rest
+      resources:
+        - path: /v1/computers
+          name: computers
+          description: "Manage endpoint computers"
+          operations:
+            - method: GET
+              name: list-computers
+              description: "List Computers"
+              call: "sepm.list-computers"
+              with:
+                computerName: "rest.computerName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/groups
+          name: groups
+          description: "Manage SEPM groups"
+          operations:
+            - method: GET
+              name: list-groups
+              description: "List Groups"
+              call: "sepm.list-groups"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-group
+              description: "Create Group"
+              call: "sepm.create-group"
+              with:
+                name: "rest.name"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: sepm-mcp
+      transport: http
+      tools:
+        - name: list-computers
+          description: "List endpoints managed by Symantec Endpoint Protection Manager"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "sepm.list-computers"
+          with:
+            computerName: "tools.computerName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-groups
+          description: "List all SEPM groups with computer counts and policy assignments"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "sepm.list-groups"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-group
+          description: "Create a new computer group in SEPM"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "sepm.create-group"
+          with:
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-administrators
+          description: "List all SEPM administrator accounts"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "sepm.list-administrators"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,29 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "symantec": "https://www.broadcom.com/vocab/symantec#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Computer": "symantec:ManagedEndpoint",
+    "Group": "symantec:ComputerGroup",
+    "Administrator": "symantec:SEPMAdministrator",
+    "Policy": "symantec:SecurityPolicy",
+
+    "id": "@id",
+    "uniqueId": "symantec:uniqueId",
+    "computerName": "schema:name",
+    "operatingSystem": "schema:operatingSystem",
+    "ipAddresses": "schema:ipAddress",
+    "agentVersion": "schema:softwareVersion",
+    "infected": "symantec:isInfected",
+    "onlineStatus": "symantec:onlineStatus",
+    "lastScanTime": {
+      "@id": "symantec:lastScanTime",
+      "@type": "xsd:integer"
+    },
+    "groupName": "symantec:groupName",
+    "numOfPhysicalComputers": "symantec:computerCount",
+    "fullPathName": "symantec:fullPath"
+  }
+}

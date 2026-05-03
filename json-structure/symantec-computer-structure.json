@@ -1,0 +1,20 @@
+{
+  "name": "SymantecComputer",
+  "description": "An endpoint computer managed by Symantec Endpoint Protection Manager",
+  "fields": [
+    { "name": "uniqueId", "type": "string", "description": "Unique SEPM computer identifier" },
+    { "name": "computerName", "type": "string", "description": "Computer hostname" },
+    { "name": "domainOrWorkgroup", "type": "string", "description": "Domain or workgroup" },
+    { "name": "ipAddresses", "type": "array<string>", "description": "IP addresses" },
+    { "name": "macAddresses", "type": "array<string>", "description": "MAC addresses" },
+    { "name": "operatingSystem", "type": "string", "description": "OS name and version" },
+    { "name": "agentVersion", "type": "string", "description": "SEP client version" },
+    { "name": "lastScanTime", "type": "unix-timestamp", "description": "Last security scan" },
+    { "name": "lastUpdateTime", "type": "unix-timestamp", "description": "Last policy update" },
+    { "name": "infected", "type": "boolean", "description": "Has active infections" },
+    { "name": "onlineStatus", "type": "integer", "description": "1=online, 0=offline" }
+  ],
+  "relationships": [
+    { "name": "group", "type": "Group", "cardinality": "many-to-one" }
+  ]
+}

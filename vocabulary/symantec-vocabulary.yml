@@ -1,0 +1,169 @@
+name: Symantec Vocabulary
+description: >-
+  Domain vocabulary for Symantec (Broadcom) enterprise cybersecurity products
+  covering endpoint protection, threat detection, data loss prevention, and
+  security management concepts used across Symantec REST APIs.
+version: '1.0'
+created: '2026-05-03'
+modified: '2026-05-03'
+provider: Symantec / Broadcom
+url: https://www.broadcom.com/products/cybersecurity/endpoint
+
+terms:
+  - term: SEPM
+    definition: >-
+      Symantec Endpoint Protection Manager. The central management server for
+      Symantec Endpoint Protection (SEP) clients. SEPM manages policies,
+      groups, definitions updates, and reporting for all managed endpoints.
+      The REST API is accessible at https://{sepm-host}:8446/sepm/api/v1.
+    tags:
+      - Core
+      - Administration
+
+  - term: SEP Client
+    definition: >-
+      Symantec Endpoint Protection client software installed on managed
+      endpoints (computers). The client enforces security policies, performs
+      scans, blocks threats, and reports status back to SEPM. Also called
+      the agent.
+    tags:
+      - Endpoint
+      - Security
+
+  - term: SES
+    definition: >-
+      Symantec Endpoint Security. The cloud-delivered endpoint security
+      platform that combines prevention, detection, and response capabilities.
+      Includes EDR, behavioral analytics, and threat intelligence via the
+      Symantec Global Intelligence Network.
+    tags:
+      - Cloud Security
+      - Endpoint
+
+  - term: EDR
+    definition: >-
+      Endpoint Detection and Response. A security solution that continuously
+      monitors endpoints for suspicious activities, records forensic data,
+      and enables threat hunting and incident investigation. Symantec EDR
+      uses machine learning and behavioral analytics.
+    tags:
+      - Detection
+      - Incident Response
+      - Threat Hunting
+
+  - term: DLP
+    definition: >-
+      Data Loss Prevention. Symantec DLP monitors and controls data in motion,
+      at rest, and in use to prevent unauthorized disclosure of sensitive
+      information. Provides incident management, policy management, and
+      endpoint monitoring via REST API.
+    tags:
+      - Compliance
+      - Data Protection
+
+  - term: ICDm
+    definition: >-
+      Integrated Cyber Defense Manager. Symantec's unified management console
+      for cloud-delivered security services. Provides a single pane of glass
+      for managing endpoint, network, and cloud security products.
+    tags:
+      - Administration
+      - Cloud Security
+
+  - term: Computer Group
+    definition: >-
+      A logical grouping of endpoint computers in SEPM that share the same
+      security policy settings. Groups have hierarchical structure and
+      can inherit policies from parent groups.
+    tags:
+      - Administration
+      - Policy Management
+
+  - term: Policy
+    definition: >-
+      A set of security configurations applied to a group of endpoints in
+      SEPM. Policy types include Virus and Spyware Protection, Firewall,
+      Intrusion Prevention, Application and Device Control, and LiveUpdate.
+    tags:
+      - Configuration
+      - Security
+
+  - term: Definition Update
+    definition: >-
+      A virus definition file update distributed by Symantec's LiveUpdate
+      infrastructure. Contains signatures for detecting known malware and
+      threats. Managed endpoints receive updates from SEPM or directly
+      from Symantec LiveUpdate servers.
+    tags:
+      - Threat Intelligence
+      - Updates
+
+  - term: UETR
+    definition: >-
+      Unique End-to-End Transaction Reference. A UUID assigned to each
+      Symantec security event for correlation and tracking across detection,
+      investigation, and response workflows. Note: This is also used in
+      SWIFT GPI for payment tracking.
+    tags:
+      - Correlation
+      - Events
+
+  - term: Symantec CBX
+    definition: >-
+      Symantec CBX (Carbon + Broadcom + Xpanse-inspired). A 2026 unified XDR
+      platform combining Symantec's prevention, data security, and network
+      security features with Carbon Black's EDR technology. Provides a single
+      cloud platform for endpoint detection and response.
+    tags:
+      - XDR
+      - EDR
+      - Cloud Security
+
+  - term: Bearer Token
+    definition: >-
+      The OAuth 2.0 access token used to authenticate SEPM API requests.
+      Obtained via POST /identity/authenticate with username/password
+      credentials. Must be included as Authorization: Bearer {token} header
+      in all subsequent API calls.
+    tags:
+      - Authentication
+      - Security
+
+  - term: SysAdmin Role
+    definition: >-
+      The highest privilege level in SEPM, required for full API access.
+      SysAdmin accounts can manage all aspects of the SEPM installation
+      including all groups, policies, and administrative functions.
+    tags:
+      - Authorization
+      - Administration
+
+  - term: Global Intelligence Network
+    definition: >-
+      Symantec's threat intelligence infrastructure that collects and analyzes
+      security telemetry from millions of endpoints worldwide to identify
+      emerging threats and zero-day attacks. Powers real-time threat detection
+      for SEP and SES products.
+    tags:
+      - Threat Intelligence
+      - Security
+
+  - term: Behavioral Analytics
+    definition: >-
+      A detection method used by Symantec EDR and SES that identifies
+      suspicious activities based on behavior patterns rather than known
+      signatures. Detects fileless malware, living-off-the-land attacks,
+      and other advanced threats.
+    tags:
+      - Detection
+      - EDR
+
+  - term: Threat Hunting
+    definition: >-
+      A proactive security practice of searching through endpoint telemetry
+      and threat data to identify adversaries operating in the environment
+      who have evaded automated detection. Supported by the Symantec EDR API.
+    tags:
+      - EDR
+      - Incident Response
+      - Detection
