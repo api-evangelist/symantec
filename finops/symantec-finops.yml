@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,163 +9,58 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Symantec
 providerId: symantec
-publisherName: Symantec
-serviceCategory: API
+publisherName: Broadcom Inc. (Symantec Enterprise Cloud)
+serviceCategory: Cybersecurity / Endpoint Security
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Broadcom
   - Cybersecurity
-  - DLP
-  - EDR
-  - Endpoint Protection
   - Endpoint Security
-  - Security
-  - Symantec
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Symantec API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: Symantec API access is bundled with Broadcom-issued enterprise security licenses (SEPM, SES, EDR, DLP); there is no published usage-based pricing or FOCUS-aligned export, so FinOps shape is approximated from license-bundle invoices.
+sources:
+  - https://www.broadcom.com/products/cybersecurity/endpoint
+  - https://apidocs.symantec.com/
+  - https://apidocs.securitycloud.symantec.com/
+notes: Broadcom does not publish a usage-metered API pricing surface for Symantec products. Cost data must be reconciled from negotiated enterprise license invoices issued by Broadcom Inc.
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Enterprise License
+  billingFrequency: Annual
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
+    - Usage
 focusColumns:
-  ServiceName: Symantec
-  ServiceCategory: Developer Tools / API
-  ProviderName: Symantec
-  PublisherName: Symantec
-  InvoiceIssuerName: Symantec
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceName: Symantec Enterprise Cloud
+  ServiceCategory: Cybersecurity / Endpoint Security
+  ProviderName: Symantec (Broadcom)
+  PublisherName: Broadcom Inc.
+  InvoiceIssuerName: Broadcom Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
+  - name: endpoint_licenses
+    description: Per-endpoint license counts for SEPM/SES (the primary commercial unit for endpoint protection).
+    unit: endpoint
+    aggregation: max
+  - name: protected_data_volume
+    description: Data volume protected by DLP / monitored channels - typical commercial unit for the DLP product line.
     unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Symantec Endpoint Protection Manager API
-    baseURL: https://{sepm-host}:8446/sepm/api/v1
-    tags:
-      - Computers
-      - Endpoint Protection
-      - Groups
-      - Policies
-      - Security Management
-      - SEPM
-    serviceName: Symantec Endpoint Protection Manager API
-    serviceCategory: API
-  - name: Symantec Endpoint Security API
-    baseURL: ''
-    tags:
-      - Behavioral Analytics
-      - Cloud Security
-      - Devices
-      - Endpoint Security
-      - Events
-      - Incidents
-      - SES
-    serviceName: Symantec Endpoint Security API
-    serviceCategory: API
-  - name: Symantec Endpoint Detection and Response API
-    baseURL: ''
-    tags:
-      - EDR
-      - Endpoint Security
-      - Forensics
-      - Incidents
-      - Threat Hunting
-    serviceName: Symantec Endpoint Detection and Response API
-    serviceCategory: API
-  - name: Symantec Data Loss Prevention API
-    baseURL: ''
-    tags:
-      - Compliance
-      - DLP
-      - Data Loss Prevention
-      - Incidents
-      - Policy Management
-    serviceName: Symantec Data Loss Prevention API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+    aggregation: max
+  - name: edr_licensed_endpoints
+    description: Endpoints under EDR coverage; commercial unit for the EDR product line.
+    unit: endpoint
+    aggregation: max
+principles:
+  - name: Visibility
+    description: Cost visibility is on a per-license basis from Broadcom's commercial portal; the API surface itself is not separately metered or invoiced.
+  - name: Allocation
+    description: Allocate by product (SEPM/SES/EDR/DLP) and by managed endpoint count - the same units used on the Broadcom invoice.
+  - name: Optimization
+    description: Optimization levers are commercial - right-size endpoint counts, consolidate to the unified Symantec Enterprise Cloud bundle, and renegotiate at term boundaries.
+  - name: Accountability
+    description: Security/IT operations owns endpoint counts; procurement/legal owns the Broadcom contract; together they reconcile against the Broadcom invoice.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

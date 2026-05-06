@@ -4,104 +4,37 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Symantec
 providerId: symantec
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Broadcom
   - Cybersecurity
-  - DLP
-  - EDR
-  - Endpoint Protection
   - Endpoint Security
-  - Security
-  - Symantec
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Symantec API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Symantec's REST APIs (SEPM, SES, EDR, DLP) are documented through Broadcom TechDocs and apidocs.symantec.com but Broadcom does not publish standardized per-second/per-minute rate-limit numbers. SEPM is typically self-hosted, so throttling is governed by the customer's deployment; the cloud-managed SES, EDR, and DLP services apply internal limits but those numbers are not public.
+sources:
+  - https://apidocs.symantec.com/
+  - https://apidocs.securitycloud.symantec.com/
+  - https://techdocs.broadcom.com/us/en/symantec-security-software
+notes: No published rate-limit numbers across the Symantec API portfolio. Self-hosted products (e.g. SEPM) are bound by the customer's infrastructure; cloud products throttle, but the thresholds are not public.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Symantec Endpoint Protection Manager API
-      - Symantec Endpoint Security API
-      - Symantec Endpoint Detection and Response API
-      - Symantec Data Loss Prevention API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Symantec Endpoint Protection Manager API
-      - Symantec Endpoint Security API
-      - Symantec Endpoint Detection and Response API
-      - Symantec Data Loss Prevention API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Symantec Endpoint Protection Manager API
-      - Symantec Endpoint Security API
-      - Symantec Endpoint Detection and Response API
-      - Symantec Data Loss Prevention API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Symantec Endpoint Protection Manager API
-      - Symantec Endpoint Security API
-      - Symantec Endpoint Detection and Response API
-      - Symantec Data Loss Prevention API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Symantec Endpoint Protection Manager API
-      - Symantec Endpoint Security API
-      - Symantec Endpoint Detection and Response API
-      - Symantec Data Loss Prevention API
+  - name: Self-Hosted Throttling (SEPM, on-prem DLP)
+    scope: deployment
+    metric: varies
+    limit: 'governed by customer deployment - not centrally published'
+    notes: SEPM and on-prem DLP run in customer infrastructure; effective limits depend on local sizing.
+  - name: Cloud-Managed Throttling (SES, EDR cloud)
+    scope: tenant
+    metric: varies
+    limit: 'see Broadcom apidocs / TechDocs - numbers not publicly published'
+    notes: Cloud-managed Symantec services apply internal throttling; specific thresholds are documented per customer in TechDocs / support cases.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: OAuth 2.0 Auth
+    description: All Symantec REST APIs (SEPM, SES, EDR, DLP) use OAuth 2.0 client-credentials flow; rate-limit scoping is generally per-token / per-tenant.
+  - name: Reference Broadcom TechDocs
+    description: Specific limits, retry guidance, and deprecation notices are kept in product-specific Broadcom TechDocs pages rather than a single rate-limit reference.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
