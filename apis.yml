@@ -127,7 +127,7 @@ common:
     url: https://www.broadcom.com/company/legal/terms-of-use
   - type: PrivacyPolicy
     url: https://www.broadcom.com/company/legal/privacy
-  - type: Status
+  - type: StatusPage
     url: https://status.broadcom.com/services/symantec-endpoint-security-enterprise/
   - type: Blog
     url: https://www.broadcom.com/blog/category/cybersecurity
