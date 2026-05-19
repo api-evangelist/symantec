@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Symantec Endpoint Protection Manager API — Administrators
+  description: 'Symantec Endpoint Protection Manager API — Administrators. 1 operations. Lead operation: List Administrators.
+    Self-contained Naftiko capability covering one Symantec business surface.'
+  tags:
+  - Symantec
+  - Administrators
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SYMANTEC_API_KEY: SYMANTEC_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sepm-administrators
+    baseUri: https://{sepm-host}:8446/sepm/api/v1
+    description: Symantec Endpoint Protection Manager API — Administrators business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: admin-admins
+      path: /admin/admins
+      operations:
+      - name: listadministrators
+        method: GET
+        description: List Administrators
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SYMANTEC_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sepm-administrators-rest
+    port: 8080
+    description: REST adapter for Symantec Endpoint Protection Manager API — Administrators. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/admin/admins
+      name: admin-admins
+      description: REST surface for admin-admins.
+      operations:
+      - method: GET
+        name: listadministrators
+        description: List Administrators
+        call: sepm-administrators.listadministrators
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sepm-administrators-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Symantec Endpoint Protection Manager API — Administrators. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-administrators
+      description: List Administrators
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sepm-administrators.listadministrators
+      outputParameters:
+      - type: object
+        mapping: $.

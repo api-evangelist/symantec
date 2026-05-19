@@ -1,0 +1,188 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Symantec Endpoint Protection Manager API — Computers
+  description: 'Symantec Endpoint Protection Manager API — Computers. 3 operations. Lead operation: List Computers. Self-contained
+    Naftiko capability covering one Symantec business surface.'
+  tags:
+  - Symantec
+  - Computers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SYMANTEC_API_KEY: SYMANTEC_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sepm-computers
+    baseUri: https://{sepm-host}:8446/sepm/api/v1
+    description: Symantec Endpoint Protection Manager API — Computers business capability. Self-contained, no shared references.
+    resources:
+    - name: computers
+      path: /computers
+      operations:
+      - name: listcomputers
+        method: GET
+        description: List Computers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: computerName
+          in: query
+          type: string
+          description: Filter computers by name
+        - name: pageSize
+          in: query
+          type: integer
+          description: Number of results per page
+        - name: pageIndex
+          in: query
+          type: integer
+          description: Page number (1-indexed)
+        - name: sort
+          in: query
+          type: string
+          description: Sort field and direction
+    - name: computers-computerId
+      path: /computers/{computerId}
+      operations:
+      - name: removecomputer
+        method: DELETE
+        description: Remove Computer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: computerId
+          in: path
+          type: string
+          description: Unique computer identifier
+          required: true
+    - name: computers-computerId-group
+      path: /computers/{computerId}/group
+      operations:
+      - name: movecomputertogroup
+        method: PATCH
+        description: Move Computer to Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: computerId
+          in: path
+          type: string
+          description: Unique computer identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SYMANTEC_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sepm-computers-rest
+    port: 8080
+    description: REST adapter for Symantec Endpoint Protection Manager API — Computers. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/computers
+      name: computers
+      description: REST surface for computers.
+      operations:
+      - method: GET
+        name: listcomputers
+        description: List Computers
+        call: sepm-computers.listcomputers
+        with:
+          computerName: rest.computerName
+          pageSize: rest.pageSize
+          pageIndex: rest.pageIndex
+          sort: rest.sort
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/computers/{computerid}
+      name: computers-computerid
+      description: REST surface for computers-computerId.
+      operations:
+      - method: DELETE
+        name: removecomputer
+        description: Remove Computer
+        call: sepm-computers.removecomputer
+        with:
+          computerId: rest.computerId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/computers/{computerid}/group
+      name: computers-computerid-group
+      description: REST surface for computers-computerId-group.
+      operations:
+      - method: PATCH
+        name: movecomputertogroup
+        description: Move Computer to Group
+        call: sepm-computers.movecomputertogroup
+        with:
+          computerId: rest.computerId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sepm-computers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Symantec Endpoint Protection Manager API — Computers. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-computers
+      description: List Computers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sepm-computers.listcomputers
+      with:
+        computerName: tools.computerName
+        pageSize: tools.pageSize
+        pageIndex: tools.pageIndex
+        sort: tools.sort
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-computer
+      description: Remove Computer
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: sepm-computers.removecomputer
+      with:
+        computerId: tools.computerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: move-computer-group
+      description: Move Computer to Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: sepm-computers.movecomputertogroup
+      with:
+        computerId: tools.computerId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

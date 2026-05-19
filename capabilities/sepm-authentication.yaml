@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Symantec Endpoint Protection Manager API — Authentication
+  description: 'Symantec Endpoint Protection Manager API — Authentication. 1 operations. Lead operation: Authenticate to SEPM.
+    Self-contained Naftiko capability covering one Symantec business surface.'
+  tags:
+  - Symantec
+  - Authentication
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SYMANTEC_API_KEY: SYMANTEC_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sepm-authentication
+    baseUri: https://{sepm-host}:8446/sepm/api/v1
+    description: Symantec Endpoint Protection Manager API — Authentication business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: identity-authenticate
+      path: /identity/authenticate
+      operations:
+      - name: authenticate
+        method: POST
+        description: Authenticate to SEPM
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SYMANTEC_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sepm-authentication-rest
+    port: 8080
+    description: REST adapter for Symantec Endpoint Protection Manager API — Authentication. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/identity/authenticate
+      name: identity-authenticate
+      description: REST surface for identity-authenticate.
+      operations:
+      - method: POST
+        name: authenticate
+        description: Authenticate to SEPM
+        call: sepm-authentication.authenticate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sepm-authentication-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Symantec Endpoint Protection Manager API — Authentication. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: authenticate-sepm
+      description: Authenticate to SEPM
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sepm-authentication.authenticate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
