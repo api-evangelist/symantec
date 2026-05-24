@@ -127,6 +127,8 @@ common:
   url: https://www.broadcom.com/blog/category/cybersecurity
 - type: TechDocs
   url: https://techdocs.broadcom.com
+- type: LLMsTxt
+  url: https://apidocs.securitycloud.symantec.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
