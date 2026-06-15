@@ -1,0 +1,243 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Symantec Endpoint Protection Manager API",
+    "version": "14.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authenticate to SEPM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/identity/authenticate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticates with SEPM using username, password, and domain credentials. Returns a Bearer token and refresh token for subsequent API calls. Requires SysAdmin role for full API access."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "API Version",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/api-stats/version",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the current SEPM REST API version information."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Computers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Computers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/computers",
+            "params": [
+              {
+                "name": "computerName",
+                "value": "",
+                "type": "query",
+                "description": "Filter computers by name"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "pageIndex",
+                "value": "",
+                "type": "query",
+                "description": "Page number (1-indexed)"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field and direction"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieves a paginated list of computers (endpoints) managed by SEPM. Supports filtering by computer name and pagination. Returns device details including hostname, OS, SEP version, and last update time."
+        },
+        {
+          "info": {
+            "name": "Remove Computer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/computers/:computerId",
+            "params": [
+              {
+                "name": "computerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique computer identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a computer from SEPM management. The computer's endpoint protection client is unmanaged upon removal."
+        },
+        {
+          "info": {
+            "name": "Move Computer to Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/computers/:computerId/group",
+            "params": [
+              {
+                "name": "computerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique computer identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Moves a computer to a different group within SEPM. The computer's policy assignments change based on the new group's policy settings."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/groups",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieves a list of all groups configured in SEPM. Groups organize computers and define policy application scope."
+        },
+        {
+          "info": {
+            "name": "Create Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new computer group in SEPM."
+        },
+        {
+          "info": {
+            "name": "Delete Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "Unique group identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a group from SEPM. The group must be empty before deletion."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Administrators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Administrators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/admin/admins",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieves a list of all administrator accounts configured in SEPM."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
