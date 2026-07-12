@@ -101,6 +101,10 @@ apis:
       - type: Documentation
         url: https://apidocs.symantec.com/home/DLP15.7
 common:
+  - type: DomainSecurity
+    url: security/symantec-domain-security.yml
+  - type: Authentication
+    url: authentication/symantec-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/symantec
   - type: Website
