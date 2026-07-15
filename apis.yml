@@ -101,6 +101,8 @@ apis:
       - type: Documentation
         url: https://apidocs.symantec.com/home/DLP15.7
 common:
+  - type: AgenticAccess
+    url: agentic-access/symantec-agentic-access.yml
   - type: DomainSecurity
     url: security/symantec-domain-security.yml
   - type: Authentication
