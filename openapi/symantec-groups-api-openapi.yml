@@ -1,0 +1,164 @@
+openapi: 3.1.0
+info:
+  title: Symantec Endpoint Protection Manager Administrators Groups API
+  description: The Symantec Endpoint Protection Manager (SEPM) REST API provides programmatic access to manage endpoint protection infrastructure. Enables management of computers (endpoints), groups, policies, server administrators, API versioning, and device lifecycle operations. Authentication uses OAuth 2.0 with username/password credentials via the identity endpoint, returning a Bearer token for subsequent calls.
+  version: '14.0'
+  contact:
+    name: Broadcom Support
+    url: https://support.broadcom.com
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+servers:
+- url: https://{sepm-host}:8446/sepm/api/v1
+  description: Symantec Endpoint Protection Manager
+  variables:
+    sepm-host:
+      default: localhost
+      description: SEPM server hostname or IP address
+tags:
+- name: Groups
+  description: SEPM group management
+paths:
+  /groups:
+    get:
+      operationId: listGroups
+      summary: List Groups
+      description: Retrieves a list of all groups configured in SEPM. Groups organize computers and define policy application scope.
+      tags:
+      - Groups
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: List of SEPM groups
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createGroup
+      summary: Create Group
+      description: Creates a new computer group in SEPM.
+      tags:
+      - Groups
+      security:
+      - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupRequest'
+            example:
+              name: Sales Laptops
+              description: Group for sales team laptops
+      responses:
+        '200':
+          description: Group created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /groups/{groupId}:
+    delete:
+      operationId: deleteGroup
+      summary: Delete Group
+      description: Deletes a group from SEPM. The group must be empty before deletion.
+      tags:
+      - Groups
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique group identifier
+      responses:
+        '200':
+          description: Group deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    CreateGroupRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Group name
+        description:
+          type: string
+          description: Group description
+    GroupListResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique group identifier
+        name:
+          type: string
+          description: Group display name
+        description:
+          type: string
+          description: Group description
+        fullPathName:
+          type: string
+          description: Full path including parent groups
+        numOfPhysicalComputers:
+          type: integer
+          description: Number of computers in this group
+        created:
+          type: integer
+          description: Unix timestamp of group creation
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized - missing or expired Bearer token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token obtained from the /identity/authenticate endpoint
+externalDocs:
+  description: Symantec Endpoint Protection Manager API Documentation
+  url: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html

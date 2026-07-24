@@ -1,0 +1,216 @@
+openapi: 3.1.0
+info:
+  title: Symantec Endpoint Protection Manager Administrators Computers API
+  description: The Symantec Endpoint Protection Manager (SEPM) REST API provides programmatic access to manage endpoint protection infrastructure. Enables management of computers (endpoints), groups, policies, server administrators, API versioning, and device lifecycle operations. Authentication uses OAuth 2.0 with username/password credentials via the identity endpoint, returning a Bearer token for subsequent calls.
+  version: '14.0'
+  contact:
+    name: Broadcom Support
+    url: https://support.broadcom.com
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+servers:
+- url: https://{sepm-host}:8446/sepm/api/v1
+  description: Symantec Endpoint Protection Manager
+  variables:
+    sepm-host:
+      default: localhost
+      description: SEPM server hostname or IP address
+tags:
+- name: Computers
+  description: Endpoint computer management and querying
+paths:
+  /computers:
+    get:
+      operationId: listComputers
+      summary: List Computers
+      description: Retrieves a paginated list of computers (endpoints) managed by SEPM. Supports filtering by computer name and pagination. Returns device details including hostname, OS, SEP version, and last update time.
+      tags:
+      - Computers
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: computerName
+        in: query
+        schema:
+          type: string
+        description: Filter computers by name
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+          default: 25
+          maximum: 1000
+        description: Number of results per page
+      - name: pageIndex
+        in: query
+        schema:
+          type: integer
+          default: 1
+        description: Page number (1-indexed)
+      - name: sort
+        in: query
+        schema:
+          type: string
+        description: Sort field and direction
+      responses:
+        '200':
+          description: Paginated list of computers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComputerListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /computers/{computerId}:
+    delete:
+      operationId: removeComputer
+      summary: Remove Computer
+      description: Removes a computer from SEPM management. The computer's endpoint protection client is unmanaged upon removal.
+      tags:
+      - Computers
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: computerId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique computer identifier
+      responses:
+        '200':
+          description: Computer removed successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /computers/{computerId}/group:
+    patch:
+      operationId: moveComputerToGroup
+      summary: Move Computer to Group
+      description: Moves a computer to a different group within SEPM. The computer's policy assignments change based on the new group's policy settings.
+      tags:
+      - Computers
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: computerId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique computer identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - targetGroupId
+              properties:
+                targetGroupId:
+                  type: string
+                  description: Destination group ID
+      responses:
+        '200':
+          description: Computer moved successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    ComputerListResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Computer'
+        number:
+          type: integer
+          description: Current page number
+        size:
+          type: integer
+          description: Page size
+        sort:
+          type: string
+        totalElements:
+          type: integer
+          description: Total number of matching computers
+        totalPages:
+          type: integer
+    Computer:
+      type: object
+      properties:
+        uniqueId:
+          type: string
+          description: Unique computer identifier
+        computerName:
+          type: string
+          description: Computer hostname
+        domainOrWorkgroup:
+          type: string
+          description: Domain or workgroup name
+        ipAddresses:
+          type: array
+          items:
+            type: string
+          description: IP addresses assigned to the computer
+        macAddresses:
+          type: array
+          items:
+            type: string
+          description: MAC addresses
+        operatingSystem:
+          type: string
+          description: Operating system name and version
+        agentVersion:
+          type: string
+          description: SEP client version installed
+        lastScanTime:
+          type: integer
+          description: Unix timestamp of last security scan
+        lastUpdateTime:
+          type: integer
+          description: Unix timestamp of last policy update
+        infected:
+          type: boolean
+          description: Whether the computer has active infections
+        groupId:
+          type: string
+          description: Group ID the computer belongs to
+        groupName:
+          type: string
+          description: Group name the computer belongs to
+        onlineStatus:
+          type: integer
+          description: Online status (1=online, 0=offline)
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized - missing or expired Bearer token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token obtained from the /identity/authenticate endpoint
+externalDocs:
+  description: Symantec Endpoint Protection Manager API Documentation
+  url: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
