@@ -1,0 +1,464 @@
+openapi: 3.1.0
+info:
+  title: Symantec Endpoint Protection Manager API
+  description: >-
+    The Symantec Endpoint Protection Manager (SEPM) REST API provides
+    programmatic access to manage endpoint protection infrastructure.
+    Enables management of computers (endpoints), groups, policies, server
+    administrators, API versioning, and device lifecycle operations.
+    Authentication uses OAuth 2.0 with username/password credentials via
+    the identity endpoint, returning a Bearer token for subsequent calls.
+  version: '14.0'
+  contact:
+    name: Broadcom Support
+    url: https://support.broadcom.com
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+externalDocs:
+  description: Symantec Endpoint Protection Manager API Documentation
+  url: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
+servers:
+  - url: https://{sepm-host}:8446/sepm/api/v1
+    description: Symantec Endpoint Protection Manager
+    variables:
+      sepm-host:
+        default: localhost
+        description: SEPM server hostname or IP address
+tags:
+  - name: Authentication
+    description: OAuth 2.0 authentication endpoints
+  - name: Computers
+    description: Endpoint computer management and querying
+  - name: Groups
+    description: SEPM group management
+  - name: Administrators
+    description: SEPM administrator account management
+  - name: API Version
+    description: API version information
+paths:
+  /identity/authenticate:
+    post:
+      operationId: authenticate
+      summary: Authenticate to SEPM
+      description: >-
+        Authenticates with SEPM using username, password, and domain credentials.
+        Returns a Bearer token and refresh token for subsequent API calls.
+        Requires SysAdmin role for full API access.
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRequest'
+            example:
+              username: admin
+              password: password123
+              domain: ''
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api-stats/version:
+    get:
+      operationId: getApiVersion
+      summary: Get API Version
+      description: Returns the current SEPM REST API version information.
+      tags:
+        - API Version
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: API version information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiVersion'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /computers:
+    get:
+      operationId: listComputers
+      summary: List Computers
+      description: >-
+        Retrieves a paginated list of computers (endpoints) managed by SEPM.
+        Supports filtering by computer name and pagination. Returns device
+        details including hostname, OS, SEP version, and last update time.
+      tags:
+        - Computers
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: computerName
+          in: query
+          schema:
+            type: string
+          description: Filter computers by name
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 25
+            maximum: 1000
+          description: Number of results per page
+        - name: pageIndex
+          in: query
+          schema:
+            type: integer
+            default: 1
+          description: Page number (1-indexed)
+        - name: sort
+          in: query
+          schema:
+            type: string
+          description: Sort field and direction
+      responses:
+        '200':
+          description: Paginated list of computers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComputerListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /computers/{computerId}:
+    delete:
+      operationId: removeComputer
+      summary: Remove Computer
+      description: >-
+        Removes a computer from SEPM management. The computer's endpoint
+        protection client is unmanaged upon removal.
+      tags:
+        - Computers
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: computerId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique computer identifier
+      responses:
+        '200':
+          description: Computer removed successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /computers/{computerId}/group:
+    patch:
+      operationId: moveComputerToGroup
+      summary: Move Computer to Group
+      description: >-
+        Moves a computer to a different group within SEPM. The computer's
+        policy assignments change based on the new group's policy settings.
+      tags:
+        - Computers
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: computerId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique computer identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - targetGroupId
+              properties:
+                targetGroupId:
+                  type: string
+                  description: Destination group ID
+      responses:
+        '200':
+          description: Computer moved successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /groups:
+    get:
+      operationId: listGroups
+      summary: List Groups
+      description: >-
+        Retrieves a list of all groups configured in SEPM. Groups organize
+        computers and define policy application scope.
+      tags:
+        - Groups
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: List of SEPM groups
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createGroup
+      summary: Create Group
+      description: Creates a new computer group in SEPM.
+      tags:
+        - Groups
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupRequest'
+            example:
+              name: Sales Laptops
+              description: Group for sales team laptops
+      responses:
+        '200':
+          description: Group created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /groups/{groupId}:
+    delete:
+      operationId: deleteGroup
+      summary: Delete Group
+      description: Deletes a group from SEPM. The group must be empty before deletion.
+      tags:
+        - Groups
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique group identifier
+      responses:
+        '200':
+          description: Group deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /admin/admins:
+    get:
+      operationId: listAdministrators
+      summary: List Administrators
+      description: Retrieves a list of all administrator accounts configured in SEPM.
+      tags:
+        - Administrators
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: List of administrators
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token obtained from the /identity/authenticate endpoint
+  schemas:
+    AuthRequest:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          description: SEPM administrator username
+        password:
+          type: string
+          format: password
+          description: SEPM administrator password
+        domain:
+          type: string
+          description: Domain name (can be empty string for default domain)
+    AuthResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Bearer token for API authentication
+        tokenExpiry:
+          type: string
+          format: date-time
+          description: Token expiration timestamp
+        refreshToken:
+          type: string
+          description: Refresh token for obtaining new access tokens
+    ApiVersion:
+      type: object
+      properties:
+        version:
+          type: string
+          description: API version string
+        revision:
+          type: integer
+    Computer:
+      type: object
+      properties:
+        uniqueId:
+          type: string
+          description: Unique computer identifier
+        computerName:
+          type: string
+          description: Computer hostname
+        domainOrWorkgroup:
+          type: string
+          description: Domain or workgroup name
+        ipAddresses:
+          type: array
+          items:
+            type: string
+          description: IP addresses assigned to the computer
+        macAddresses:
+          type: array
+          items:
+            type: string
+          description: MAC addresses
+        operatingSystem:
+          type: string
+          description: Operating system name and version
+        agentVersion:
+          type: string
+          description: SEP client version installed
+        lastScanTime:
+          type: integer
+          description: Unix timestamp of last security scan
+        lastUpdateTime:
+          type: integer
+          description: Unix timestamp of last policy update
+        infected:
+          type: boolean
+          description: Whether the computer has active infections
+        groupId:
+          type: string
+          description: Group ID the computer belongs to
+        groupName:
+          type: string
+          description: Group name the computer belongs to
+        onlineStatus:
+          type: integer
+          description: Online status (1=online, 0=offline)
+    ComputerListResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Computer'
+        number:
+          type: integer
+          description: Current page number
+        size:
+          type: integer
+          description: Page size
+        sort:
+          type: string
+        totalElements:
+          type: integer
+          description: Total number of matching computers
+        totalPages:
+          type: integer
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique group identifier
+        name:
+          type: string
+          description: Group display name
+        description:
+          type: string
+          description: Group description
+        fullPathName:
+          type: string
+          description: Full path including parent groups
+        numOfPhysicalComputers:
+          type: integer
+          description: Number of computers in this group
+        created:
+          type: integer
+          description: Unix timestamp of group creation
+    GroupListResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    CreateGroupRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Group name
+        description:
+          type: string
+          description: Group description
+    AdminListResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized - missing or expired Bearer token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

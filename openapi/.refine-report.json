@@ -1,0 +1,22 @@
+{
+  "provider": "symantec",
+  "sources": [
+    "symantec-administrators-api-openapi.yml",
+    "symantec-api-version-api-openapi.yml",
+    "symantec-authentication-api-openapi.yml",
+    "symantec-computers-api-openapi.yml",
+    "symantec-groups-api-openapi.yml"
+  ],
+  "outputs": [
+    "symantec-administrators-api-openapi.yml",
+    "symantec-api-version-api-openapi.yml",
+    "symantec-authentication-api-openapi.yml",
+    "symantec-computers-api-openapi.yml",
+    "symantec-groups-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
