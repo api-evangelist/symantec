@@ -1,0 +1,502 @@
+# Broadcom Enterprise Security Group – Developer API Documentation
+
+> Comprehensive machine-readable API reference for ESG products: CBX (Carbon Black),
+> Endpoint Security, Endpoint Protection, EDR, DCS, DLP, Cloud SWG, Content Analysis,
+> ZTNA, and more. Each linked file is a clean Markdown rendering of the corresponding
+> documentation page, optimised for use as context in LLM-assisted development.
+> For multi-API workflow guidance and full inline content see the Optional section.
+
+## CBX
+
+> Implement detection and prevention measures across networks and endpoints in a unified platform.
+
+- [Get Your Bearer Token](/resources/configs/_markdown/cbx_auth.md): Generate OAuth credentials and a bearer token to authenticate securely with the CBX API.
+- [Access the CBX API](/resources/configs/_markdown/cbx_access.md): Learn how to structure CBX API requests, interpret responses, and handle common HTTP status codes.
+- [Test API Endpoints From the Browser](/resources/configs/_markdown/cbx_try_now.md): Learn how to test ESG Developer API endpoints directly from your browser.
+- [Rate Limit Management and Error Recovery](/resources/configs/_markdown/cbx_rate_limits.md): Understand CBX API rate limits, X-RateLimit response headers, and best practices for handling 429 errors.
+- [Alerts](/resources/configs/_markdown/cbx_alerts.md): Alerts
+- [Device Query](/resources/configs/_markdown/cbx_device_query.md): Manage and schedule forensic or artifact device search commands. Retrieve command details, trigger new searches, and ...
+- [Events](/resources/configs/_markdown/cbx_events.md): API for searching, validating, and retrieving detailed event data and facets.
+- [File Inventory](/resources/configs/_markdown/cbx_file_inventory.md): APIs for querying file inventory data and executing security remediation actions including quarantine, delete, unquar...
+- [Jobs](/resources/configs/_markdown/cbx_jobs.md): Export Alerts and Events data, track asynchronous job status, and retrieve completed job output files.
+- [Live Response](/resources/configs/_markdown/cbx_live_response.md): APIs for Live Response v7 — session, file, script, and command management.
+- [Notifications](/resources/configs/_markdown/cbx_notifications.md): API to manage notification rules and fetch notification history for your organization.
+- [Script Deobfuscation](/resources/configs/_markdown/cbx_script_deob.md): API to reveal obfuscated scripts.
+- [Policy Lists](/resources/configs/_markdown/cbx_policy_lists.md): Learn how to use the Policy Lists API to retrieve, filter, and manage lists of security policies, target rules, and d...
+- [Devices](/resources/configs/_markdown/cbx_devices.md): API for retrieving device lists, specific device details, and command history.
+- [Device Commands](/resources/configs/_markdown/cbx_device_commands.md): Device Commands
+- [Device Groups](/resources/configs/_markdown/cbx_device_groups.md): API for creating, retrieving, and managing hierarchical device groups and their memberships.
+- [Data Forwarder](/resources/configs/_markdown/cbx_data_forwarder.md): API for managing forwarder configurations, filters, and event schemas.
+- [Policy Management](/resources/configs/_markdown/cbx_policy_management.md): APIs for bulk exporting and importing security policies and target rules.
+- [Reporting](/resources/configs/_markdown/cbx_reporting.md): Create report templates, generate on-demand or scheduled reports, and track report generation status.
+- [Threat Intel Data Related](/resources/configs/_markdown/cbx_ti_data_related.md): Retrieve related file and network indicators to identify connections between files and network activity.
+- [Threat Intel Insight](/resources/configs/_markdown/cbx_ti_insight.md): Retrieve threat intelligence enrichments, including risk categorization and history, for files and network indicators.
+- [Threat Intel Process Chain](/resources/configs/_markdown/cbx_ti_process_chain.md): Retrieve process lineage enrichment data to trace the process chain associated with a given file.
+- [Threat Intel Protected](/resources/configs/_markdown/cbx_ti_protected.md): Check whether a file has already been blocked by Symantec threat protection technologies.
+- [Threat Intel TAXII 1.1](/resources/configs/_markdown/cbx_taxii11.md): Consume Symantec Threat Intelligence feeds in STIX 1.x XML format via the standard TAXII 1.1 Discovery, Collection Ma...
+- [Threat Intel TAXII 2.1](/resources/configs/_markdown/cbx_taxii21.md): Consume Symantec Threat Intelligence feeds in STIX 2.1 JSON format via the standard TAXII 2.1 Discovery, Collections,...
+
+## Endpoint Security
+
+> Deliver multi-layered security for devices and servers via advanced threat detection and response.
+
+- [Overview of SES APIs](/resources/configs/_markdown/ses_about.md): The Symantec Endpoint Security Authentication API is utilized to generate an access token used for subsequent API calls.
+- [Generate Your Bearer Token](/resources/configs/_markdown/ses_auth.md): The Symantec Endpoint Security Authentication API is utilized to generate an access token used for subsequent API calls.
+- [Devices](/resources/configs/_markdown/ses_devicesinfo.md): The Symantec Endpoint Security Device Group APIs lets you manage your devices or device groups.
+- [Device Commands](/resources/configs/_markdown/ses_devicecommands.md): The Symantec Endpoint Security Device Information APIs let you send commands to your devices.
+- [Device Groups](/resources/configs/_markdown/ses_devicegroupsinfo.md): The Symantec Endpoint Security Device Group APIs lets you manage your devices or device groups.
+- [Endpoint Search](/resources/configs/_markdown/ses_device_search.md): The Symantec Endpoint Security Device Monitoring APIs let you manage file and process dumps on your devices. 
+- [Event Search](/resources/configs/_markdown/ses_event_search.md): The Symantec Endpoint Security Event Search API lets you retrieve and filter Symantec Endpoint Security events.
+- [Event Stream](/resources/configs/_markdown/ses_event_stream.md): The Symantec Endpoint Security Event Export API lets you query and stream Symantec Endpoint Security events that are ...
+- [Event Export Stream (DEPRECATED)](/resources/configs/_markdown/ses_event_stream_export.md): The Symantec Endpoint Security Event Export Stream API lets you query and stream events that are generated by devices...
+- [Event Export (DEPRECATED)](/resources/configs/_markdown/ses_event_export.md): This API lets you query and stream the events that are generated by devices in your environment.
+- [File Details by Hash](/resources/configs/_markdown/file_details.md): The Symantec Endpoint Security EDR Incident API lets you retrieve EDR incidents and the events associated with those ...
+- [Incidents](/resources/configs/_markdown/edr_incidents.md): The Symantec Endpoint Security EDR Incident API lets you retrieve EDR incidents and the events associated with those ...
+- [Policy Commands](/resources/configs/_markdown/ses_policies.md): The Symantec Endpoint Security Policy Command APIs let you manage the policies for your devices or device groups. 
+- [Threat Intel Data Related](/resources/configs/_markdown/related_api.md): The Data Related APIs provide related file or network information. This includes an array of related network indicato...
+- [Threat Intel Insight](/resources/configs/_markdown/insight_api.md): The Symantec Endpoint Security Insight APIs provide file, domain and IP enrichments. These enrichments include first ...
+- [Threat Intel Process Chain](/resources/configs/_markdown/process_chain_api.md): The Process Chain API provides top K sha256 lineages along with their process names for provided sha256.
+- [Threat Intel Protection](/resources/configs/_markdown/protection.md): The Symantec Endpoint Security Protection APIs provide information whether a given file or domain has been blocked by...
+- [Use Threat Intelligence TAXII Services](/resources/configs/_markdown/taxii.md): Use Threat Intelligence TAXII Services
+- [TAXII 1.1](/resources/configs/_markdown/taxii1_1.md): TAXII 1.1
+- [TAXII 2.1](/resources/configs/_markdown/taxii2_1.md): TAXII 2.1
+
+## Endpoint Protection
+
+> Defend endpoints against malware and risks using anti-malware, firewall, and intrusion prevention.
+
+- [Administrators](/resources/configs/_markdown/admin.md): The SEP Administrators API lets you manage your administrator accounts, licenses and Threat Defense for Active Direct...
+- [Blacklist](/resources/configs/_markdown/blacklist.md): The SEP Blacklist APIs let you manage your blacklist definitions.
+- [Cloud](/resources/configs/_markdown/cloud.md): The SEP Cloud APIs let you manage your cloud connection and domain enrollment status.
+- [Commands](/resources/configs/_markdown/commands.md): The SEP Commands APIs let you manage your endpoints. Use the Commands APIs to send commands from your Symantec Endpoi...
+- [Computers](/resources/configs/_markdown/computers.md): The SEP Computers APIs let you manage your computers in a specified domain. 
+- [Content](/resources/configs/_markdown/content.md): The SEP Content API lets you retrieve the latest revision information for antivirus definitions from Symantec Securit...
+- [Domains](/resources/configs/_markdown/domains.md): The Domains APIs let you manage your domains.
+- [Events](/resources/configs/_markdown/sepm_events.md): The SEP Events APIs let you retrieve information for critical events or acknowledge any event. 
+- [Groups](/resources/configs/_markdown/groups.md): The SEP Groups APIs let you manage any aspect of your groups in a domain
+- [Group Update Provider](/resources/configs/_markdown/gup.md): The SEP Group Update Provider API lets you retrieve a list of group update providers.
+- [Identity](/resources/configs/_markdown/identity.md): The SEP Identity APIs lets you manage token authentication.
+- [Notifications](/resources/configs/_markdown/notifications.md): The SEP Notifications API lets you post an external notification. 
+- [Policies](/resources/configs/_markdown/policies.md): The SEP Policies APIs let you create, delete, modify any of your Symantec Endpoint Protection policies.
+- [Replication](/resources/configs/_markdown/replication.md): The SEP Replication APIs let you retrieve partner replication status or initiate a replication for a specified replic...
+- [Reporting](/resources/configs/_markdown/reporting.md): The SEP Reporting API lets you authenticate and return a PHP session token for a valid user.
+- [Requested Files](/resources/configs/_markdown/requestedfiles.md): The SEP Requested Files API lets you get the binary file content for a given SHA value. 
+- [Statistics](/resources/configs/_markdown/stats.md): The SEP Statistics APIs let you retrieve statistical data from your clients.
+- [Threat Defense for Active Directory](/resources/configs/_markdown/tdad.md): The SEP Threat Defense for Active Directory APIs let you manage your TDAD data and policies. 
+- [Version](/resources/configs/_markdown/version.md): The SEP Version API lets you retrieve the current version of your Symantec Endpoint Protection Manager. 
+
+## Endpoint Detection and Response
+
+> Monitor endpoint activity to detect, investigate, and automatically respond to advanced security ...
+
+- [Manage Allow Lists](/resources/configs/_markdown/allow_list_manage.md): The EDR Allow List Policy Resource API is used to manage allow list policies. 
+- [Appliance Resource](/resources/configs/_markdown/appliance_resource.md): The EDR Appliance Resource API is used to retrieve EDR appliance information.
+- [Association Resource](/resources/configs/_markdown/associations_resource.md): The EDR Association Resource API is used to retrieve EDR associations information.
+- [Audit Events Resource](/resources/configs/_markdown/auditEvents_resource.md): The EDR Audit Events Resource API is used to retrieve EDR audit events information.
+- [Command Resource](/resources/configs/_markdown/command_resource.md): The EDR Command Resource API is used for issuing a command and querying a command status and results.  
+- [Data Feeds Resource](/resources/configs/_markdown/data_feeds_resource.md): The EDR Data Feeds Resource API is used for retrieving actor, network and file adversaries.
+- [Deny List Policy Resource](/resources/configs/_markdown/deny_list_policy_resource.md): The EDR Deny List Policy Resource API is used to manage deny list policies.
+- [Entities Resource](/resources/configs/_markdown/entities_resource.md): The EDR Entities Resource API is used to search the EDR database for entities, such as file, domain, and endpoint.
+- [Events Resource](/resources/configs/_markdown/events_resource.md): The EDR Events Resource API is used to retrieve events from the EDR database. 
+- [Incident Events Resource](/resources/configs/_markdown/incident_events_resource.md): The EDR Incident Events Resource API is used to retrieve incident related events and incident related lineage events ...
+- [Incidents Resource](/resources/configs/_markdown/incidents_resource.md): The EDR Incidents Resource API is used to retrieve incidents from the EDR database, and manage (close, update resolut...
+- [Oauth 2.0 Token Resource](/resources/configs/_markdown/oauth_token_resource.md):   
+- [Sandbox Resource](/resources/configs/_markdown/sandbox_resource.md): The EDR Sandbox Resource API provides the ability for a file to be detonated in a sandbox. The API returns an assessm...
+- [System Activities Resource](/resources/configs/_markdown/system_activities_resource.md): The EDR System Activities Resource API is used to retrieve system activities from EDR.
+- [User Resource](/resources/configs/_markdown/user_resource.md):   
+
+## Data Center Security
+
+> Harden and secure servers using anti-malware, intrusion prevention, and application control.
+
+- [DCS API Authentication](/resources/configs/_markdown/dcs_auth.md): Data Center Security: Server Advanced (DCS:SA) provides comprehensive runtime server monitoring and protection enabli...
+- [DCS API Base URI](/resources/configs/_markdown/dcs_uri.md): Data Center Security: Server Advanced (DCS:SA) provides comprehensive runtime server monitoring and protection enabli...
+- [What's New in DCS 6.10.1 APIs](/resources/configs/_markdown/new_6101.md): Data Center Security: Server Advanced (DCS:SA) provides comprehensive runtime server monitoring and protection enabli...
+- [Active Directory](/resources/configs/_markdown/dcs_ad_6101.md): The Symantec Data Center Security Active Directory API is utilized to query Active Directory attributes.
+- [Administration Configuration](/resources/configs/_markdown/dcs_admin_config_6101.md): The Symantec Data Center Security Administration Configuration API is utilized to configure admin privileges.
+- [Alerts](/resources/configs/_markdown/dcs_alerts_6101.md): The Symantec Data Center Security Alerts API is utilized to configure alerts and alert rules.
+- [Application](/resources/configs/_markdown/dcs_application_6101.md): The Symantec Data Center Security Application API is utilized to configure the application.
+- [Assets](/resources/configs/_markdown/dcs_assets_6101.md): The Symantec Data Center Security Assets API is utilized to configure assets.
+- [Certificates](/resources/configs/_markdown/dcs_certificate_6101.md): The Symantec Data Center Security Certificates API is utilized to configure certificates.
+- [Dashboard](/resources/configs/_markdown/dcs_dashboard_6101.md): The Symantec Data Center Security Dashboard API is utilized to configure dashboard widgets and charts.
+- [Event Remediation](/resources/configs/_markdown/dcs_event_remediation_6101.md): The Symantec Data Center Security Event Remediation API is utilized to configure remediation rules.
+- [Events](/resources/configs/_markdown/dcs_events_6101.md): The Symantec Data Center Security Events API is utilized to configure events.
+- [License](/resources/configs/_markdown/dcs_license_6101.md): The Symantec Data Center Security License API is utilized to import the license and license details.
+- [Policy](/resources/configs/_markdown/dcs_policy_6101.md): The Symantec Data Center Security Policy API is utilized to configure policies.
+- [Reports](/resources/configs/_markdown/dcs_reports_6101.md): The Symantec Data Center Security Reports API is utilized to retrieve and export reports.
+- [Roles](/resources/configs/_markdown/dcs_roles_6101.md): The Symantec Data Center Security Administration Configuration API is utilized to configure RBAC.
+- [Schedules](/resources/configs/_markdown/dcs_schedules_6101.md): The Symantec Data Center Security Schedules API is utilized to configure scan schedules.
+- [Security Groups](/resources/configs/_markdown/dcs_security_groups_6101.md): The Symantec Data Center Security Group API is utilized to configure security groups.
+- [Server Registry](/resources/configs/_markdown/dcs_server_6101.md): The Symantec Data Center Security Server Registry API is utilized to manage servers in the registry.
+- [Smart Card](/resources/configs/_markdown/dcs_smart_card_6101.md): The Symantec Data Center Security Smart Card API is utilized to retrieve digital certificates, intermediate certifica...
+- [Status](/resources/configs/_markdown/dcs_status_6101.md): The Symantec Data Center Security Status API is utilized to retrieve the status of the Management Server and the Comm...
+- [Syslog](/resources/configs/_markdown/dcs_syslog_6101.md): The Symantec Data Center Security Syslog API.
+- [Tags](/resources/configs/_markdown/dcs_tags_6101.md): The Symantec Data Center Security Administration Configuration API is utilized to configure tags.
+- [Token](/resources/configs/_markdown/dcs_token_6101.md): The Symantec Data Center Security Token API is utilized to generate an access token to view and execute the DCS:SA RE...
+- [UMC](/resources/configs/_markdown/dcs_umc_6101.md): The Symantec Data Center Security UMC API is utilized to configure the Unified Management Console.
+- [Users](/resources/configs/_markdown/dcs_users_6101.md): The Symantec Data Center Security Users API is utilized to configure users and roles.
+- [Workspace Policy](/resources/configs/_markdown/dcs_workspace_policy_6101.md): The Symantec Data Center Security Workspace Policy API is utilized to configure Workspace policies.
+- [What's New in DCS 6.10 APIs](/resources/configs/_markdown/new_610.md): Data Center Security: Server Advanced (DCS:SA) provides comprehensive runtime server monitoring and protection enabli...
+- [Active Directory](/resources/configs/_markdown/dcs_ad.md): The Symantec Data Center Security Active Directory API is utilized to query Active Directory attributes.
+- [Administration Configuration](/resources/configs/_markdown/dcs_admin_config.md): The Symantec Data Center Security Administration Configuration API is utilized to configure admin privileges.
+- [Alert Rules](/resources/configs/_markdown/dcs_alert_rules.md): The Symantec Data Center Security Alert Rules API is utilized to configure alert rules.
+- [Alerts](/resources/configs/_markdown/dcs_alerts.md): The Symantec Data Center Security Alerts API is utilized to configure alerts.
+- [Assets](/resources/configs/_markdown/dcs_assets.md): The Symantec Data Center Security Assets API is utilized to configure assets.
+- [Certificates](/resources/configs/_markdown/dcs_certificate.md): The Symantec Data Center Security Certificates API is utilized to configure certificates.
+- [Dashboard](/resources/configs/_markdown/dcs_dashboard.md): The Symantec Data Center Security Dashboard API is utilized to configure dashboard widgets and charts.
+- [Event Remediation](/resources/configs/_markdown/dcs_event_remediation.md): The Symantec Data Center Security Event Remediation API is utilized to configure remediation rules.
+- [Events](/resources/configs/_markdown/dcs_events.md): The Symantec Data Center Security Events API is utilized to configure events.
+- [License](/resources/configs/_markdown/dcs_license.md): The Symantec Data Center Security License API is utilized to import the license and license details.
+- [Policy](/resources/configs/_markdown/dcs_policy.md): The Symantec Data Center Security Policy API is utilized to configure policies.
+- [Reports](/resources/configs/_markdown/dcs_reports.md): The Symantec Data Center Security Reports API is utilized to retrieve and export reports.
+- [Roles](/resources/configs/_markdown/dcs_roles.md): The Symantec Data Center Security Administration Configuration API is utilized to configure RBAC.
+- [Schedules](/resources/configs/_markdown/dcs_schedules.md): The Symantec Data Center Security Schedules API is utilized to configure scan schedules.
+- [Security Groups](/resources/configs/_markdown/dcs_security_groups.md): The Symantec Data Center Security Group API is utilized to configure security groups.
+- [Server Registry](/resources/configs/_markdown/dcs_server.md): The Symantec Data Center Security Server Registry API is utilized to manage servers in the registry.
+- [Smart Card](/resources/configs/_markdown/dcs_smart_card.md): The Symantec Data Center Security Smart Card API is utilized to retrieve digital certificates, intermediate certifica...
+- [Status](/resources/configs/_markdown/dcs_status.md): The Symantec Data Center Security Status API is utilized to retrieve the status of the Management Server and the Comm...
+- [Tags](/resources/configs/_markdown/dcs_tags.md): The Symantec Data Center Security Administration Configuration API is utilized to configure tags.
+- [Token](/resources/configs/_markdown/dcs_token.md): The Symantec Data Center Security Token API is utilized to generate an access token to view and execute the DCS:SA RE...
+- [UMC](/resources/configs/_markdown/dcs_umc.md): The Symantec Data Center Security UMC API is utilized to configure the Unified Management Console.
+- [Users](/resources/configs/_markdown/dcs_users.md): The Symantec Data Center Security Users API is utilized to configure users and roles.
+- [Workspace Policy](/resources/configs/_markdown/dcs_workspace_policy.md): The Symantec Data Center Security Workspace Policy API is utilized to configure Workspace policies.
+
+## Protection Engine
+
+> Integrate a scanning engine with applications and storage to provide advanced malware detection.
+
+- [About Symantec Protection Engine APIs](/resources/configs/_markdown/spe_about.md): Symantec™ Protection Engine (SPE) provides scalable, high-performance threat detection services to protect valuable d...
+- [Authentication](/resources/configs/_markdown/spe_auth_api.md): The Symantec Endpoint Security Authentication API is utilized to generate an access token used for subsequent API calls.
+- [SPE Scanner](/resources/configs/_markdown/spe_scanner_api .md): The grouping of SPE Scanner APIs consists of many APIs that let you perform different management tasks, such as, Mana...
+- [SPE Connector](/resources/configs/_markdown/spe_connector_api .md): The SPE Connector APIs offer insight into cloud assets that are protected by the Connector and their associated data.
+- [Authentication](/resources/configs/_markdown/spe_auth_api_pre.md): The Symantec Endpoint Security Authentication API is utilized to generate an access token used for subsequent API calls.
+- [SPE Scanner](/resources/configs/_markdown/spe_scanner_api_pre .md): The grouping of SPE Scanner APIs consists of many APIs that let you perform different management tasks, such as, Mana...
+
+## Data Loss Prevention
+
+> Extend enterprise DLP policies to secure sensitive data within cloud applications and web traffic.
+
+- [DLP API Overview](/resources/configs/_markdown/introduction.md): DLP API Overview
+- [Postman Collections for the REST API](/resources/configs/_markdown/postmancollections.md): Postman Collections for the REST API
+- [Code Samples for the REST API](/resources/configs/_markdown/samplecodes.md): Code Samples for the REST API
+- [New APIs in Data Loss Prevention 26.1](/resources/configs/_markdown/26-1-new.md): New APIs in Data Loss Prevention 26.1
+- [Updated APIs in Data Loss Prevention 26.1](/resources/configs/_markdown/26-1-updated.md): Updated APIs in Data Loss Prevention 26.1
+- [Deprecated APIs in Data Loss Prevention 26.1](/resources/configs/_markdown/26-1-removed.md): Deprecated APIs in Data Loss Prevention 26.1
+- [Manage the Enforce Server](/resources/configs/_markdown/26-1-enforceserver.md): Manage the Enforce Server
+- [Enforce Server General Settings](/resources/configs/_markdown/26-1-enforceservergeneralsettings.md): The DLP Enforce Server General Settings APIs lets you       . 
+- [Enforce Server Information](/resources/configs/_markdown/26-1-enforceserverinformation.md): The DLP Enforce Server Information API lets you       . 
+- [Traffic Stats](/resources/configs/_markdown/26-1-trafficstats.md): The Traffic Stats API lets you get statistical data about network traffic for each detection server. 
+- [Role Details](/resources/configs/_markdown/26-1-roledetails.md): The DLP Role Details APIs lets you       . 
+- [User Details](/resources/configs/_markdown/26-1-userdetails.md): The DLP User Details APIs lets you       . 
+- [Directory Connections](/resources/configs/_markdown/26-1-dc.md): The Directory Connections APIs let you list connections. 
+- [Enforce Server Credentials](/resources/configs/_markdown/26-1-credentials.md): The DLP Credentials API lets you          .
+- [Audit Log](/resources/configs/_markdown/26-1-auditlog.md): The Audit Log APIs let you list system log details.
+- [Logoff](/resources/configs/_markdown/26-1-logoff.md): The DLP Logoff API lets you       . 
+- [System Events](/resources/configs/_markdown/26-1-systemevents.md): The System Events API lets you manage system events. 
+- [CyberArk](/resources/configs/_markdown/26-1-cyberark.md): The CyberArk Configuration Management API lets you create, delete, update, and view CyberArk configurations. 
+- [Microsoft Entra ID Profile](/resources/configs/_markdown/26-1-me-id.md): The Microsoft Entra ID Profile API lets you create, delete, update, and view ME-ID configurations. 
+- [Manage Detection Servers](/resources/configs/_markdown/26-1-detection server.md): Manage Detection Servers
+- [Detection Server Addition](/resources/configs/_markdown/26-1-detectionserveraddition.md): The DLP Detection Server Addition APIs lets you       . 
+- [Detection Server Deletion](/resources/configs/_markdown/26-1-detection-server-deletion.md): The Detection Server Deletion Logoff API lets you delete detection server. 
+- [Detection Server Update](/resources/configs/_markdown/26-1-detectionserverupdate.md): Updates different types of detection servers.
+
+. 
+- [Detection Server Information](/resources/configs/_markdown/26-1-detectionserverinformation.md): The DLP Detection Server Information APIs lets you       . 
+- [Detection Server Recycle](/resources/configs/_markdown/26-1-detectionserverrecycle.md): The Detection Server Recycle API allows you to recycle multiple detection servers. 
+- [Detection Server Advanced Settings](/resources/configs/_markdown/26-1-serversettings.md): The DLP Server Settings APIs lets you       . 
+- [Maintain the DLP System](/resources/configs/_markdown/26-1-sys-maint.md): Maintain the DLP System
+- [Logging Configuration](/resources/configs/_markdown/26-1-logging-config.md): The Logging Configuration API lets you override log configuration settings and enable diagnostic logging on the Enfor...
+- [Logging Collection](/resources/configs/_markdown/26-1-logging-collect.md): The Logging Configuration API lets you override log configuration settings and enable diagnostic logging on the Enfor...
+- [Policies](/resources/configs/_markdown/26-1-policies.md): Policies
+- [Policy Management](/resources/configs/_markdown/26-1-policymanagement.md): The DLP Policy Management API lets you       . 
+- [Policy Groups](/resources/configs/_markdown/26-1-policygroup.md): The DLP Policy Group API lets you manage policy groups. 
+- [User Groups](/resources/configs/_markdown/26-1-usergroups.md): List all the user groups and the details of these groups. 
+- [Sender/Recipient Pattern Management](/resources/configs/_markdown/26-1-senderrecipientpatternmanagement.md): The DLP Sender Recipient Pattern Management APIs lets you       . 
+- [Keywords](/resources/configs/_markdown/26-1-keywords.md): The Keyword API lets you mange DLP keyword lists. 
+- [Policy Export Import](/resources/configs/_markdown/26-1-pac.md): The Policy Export Import API lets you import, export, and preview policies. 
+- [EDM Profile Index](/resources/configs/_markdown/26-1-edmprofileindex.md): The EDM Profile Index API lets you manage EDM profiles. 
+- [Response Rules](/resources/configs/_markdown/26-1-response rules.md): Response Rules
+- [Response Rule Management](/resources/configs/_markdown/26-1-responserulemanagement.md): The DLP Response Rule Management APIs lets you       . 
+- [Incidents](/resources/configs/_markdown/26-1-incidents.md): Incidents
+- [Incident Details](/resources/configs/_markdown/26-1-incidentdetails.md): The DLP Credentials APIs lets you       . 
+- [Incident Helper](/resources/configs/_markdown/26-1-incidenthelper.md): The DLP Incident Helper APIs lets you       . 
+- [Incident Lists](/resources/configs/_markdown/26-1-incidentlists.md): The DLP Incident Lists APIs lets you       . 
+- [Incident Update](/resources/configs/_markdown/26-1-incidentupdate.md): The DLP Incident Update APIs lets you       . 
+- [Incident Deletion](/resources/configs/_markdown/26-1-incidentdeletion.md): The DLP Incident Deletion APIs lets you       . 
+- [Incident Workflows](/resources/configs/_markdown/26-1-incidentworkflows.md): The DLP Incident Workflows APIs lets you       . 
+- [Saved Report Details](/resources/configs/_markdown/26-1-savedreportdetails.md): The DLP Saved Report Details API lets you       . 
+- [Storage DLP](/resources/configs/_markdown/26-1-storage.md): Storage DLP
+- [Network Discover Cluster Certificates](/resources/configs/_markdown/26-1-networkdiscoverclustercertificates.md): The DLP Network Discover Cluster Certificates APIs lets you       . 
+- [Network Discover Clusters](/resources/configs/_markdown/26-1-networkdiscoverclusters.md): The DLP Network Discover Clusters APIs lets you       . 
+- [Network Discover Target Management](/resources/configs/_markdown/26-1-networkdiscovertargetmanagement.md): The DLP Network Discover Target Management APIs lets you       . 
+- [Network Discover Target Walk Management](/resources/configs/_markdown/26-1-networkdiscovertargetwalkdetailsandreports.md): The DLP Network Discover Target Walk Management APIs lets you       . 
+- [Network Discover Target Walk Reports](/resources/configs/_markdown/26-1-networkdiscovertargetwalkreports.md): The DLP Network Discover Target Walk Reports APIs lets you       . 
+- [Endpoint DLP](/resources/configs/_markdown/26-1-endpoint.md): Endpoint DLP
+- [Endpoint Certificate Management](/resources/configs/_markdown/26-1-endpointcertificatemanagement.md): The DLP Endpoint Certificate Management APIs lets you       . 
+- [Agent Events](/resources/configs/_markdown/26-1-agentevents.md): The DLP Agent Events APIs lets you manage agent events. 
+- [Agent Management](/resources/configs/_markdown/26-1-agentmanage.md): The DLP Agent Management APIs lets you manage agents. 
+- [Application Detection](/resources/configs/_markdown/26-1-applicationdetection.md): Application Detection
+- [Application Detection](/resources/configs/_markdown/26-1-appdetection.md): The DLP Application Detection APIs lets you       . 
+- [New APIs in Data Loss Prevention 25.1](/resources/configs/_markdown/25-1-new.md): New APIs in Data Loss Prevention 25.1
+- [Updated APIs in Data Loss Prevention 25.1](/resources/configs/_markdown/25-1-updated.md): Updated APIs in Data Loss Prevention 25.1
+- [Deprecated APIs in Data Loss Prevention 25.1](/resources/configs/_markdown/25-1-removed.md): Deprecated APIs in Data Loss Prevention 25.1
+- [Manage the Enforce Server](/resources/configs/_markdown/25-1-enforceserver.md): Manage the Enforce Server
+- [Enforce Server General Settings](/resources/configs/_markdown/25-1-enforceservergeneralsettings.md): The DLP Enforce Server General Settings APIs lets you       . 
+- [Enforce Server Information](/resources/configs/_markdown/25-1-enforceserverinformation.md): The DLP Enforce Server Information API lets you       . 
+- [Traffic Stats](/resources/configs/_markdown/25-1-trafficstats.md): The Traffic Stats API lets you get statistical data about network traffic for each detection server. 
+- [Role Details](/resources/configs/_markdown/25-1-roledetails.md): The DLP Role Details APIs lets you       . 
+- [User Details](/resources/configs/_markdown/25-1-userdetails.md): The DLP User Details APIs lets you       . 
+- [Directory Connections](/resources/configs/_markdown/25-1-dc.md): The Directory Connections APIs let you list connections. 
+- [Enforce Server Credentials](/resources/configs/_markdown/25-1-credentials.md): The DLP Credentials API lets you          .
+- [Audit Log](/resources/configs/_markdown/25-1-auditlog.md): The Audit Log APIs let you list system log details.
+- [Logoff](/resources/configs/_markdown/25-1-logoff.md): The DLP Logoff API lets you       . 
+- [System Events](/resources/configs/_markdown/25-1-systemevents.md): The System Events API lets you manage system events. 
+- [CyberArk](/resources/configs/_markdown/25-1-cyberark.md): The CyberArk Configuration Management API lets you create, delete, update, and view CyberArk configurations. 
+- [Manage Detection Servers](/resources/configs/_markdown/25-1-detection server.md): Manage Detection Servers
+- [Detection Server Addition](/resources/configs/_markdown/25-1-detectionserveraddition.md): The DLP Detection Server Addition APIs lets you       . 
+- [Detection Server Information](/resources/configs/_markdown/25-1-detectionserverinformation.md): The DLP Detection Server Information APIs lets you       . 
+- [Detection Server Recycle](/resources/configs/_markdown/25-1-detectionserverrecycle.md): The Detection Server Recycle API allows you to recycle multiple detection servers. 
+- [Detection Server Advanced Settings](/resources/configs/_markdown/25-1-serversettings.md): The DLP Server Settings APIs lets you       . 
+- [Policies](/resources/configs/_markdown/25-1-policies.md): Policies
+- [Policy Management](/resources/configs/_markdown/25-1-policymanagement.md): The DLP Policy Management API lets you       . 
+- [Policy Groups](/resources/configs/_markdown/25-1-policygroup.md): The DLP Policy Group API lets you manage policy groups. 
+- [User Groups](/resources/configs/_markdown/25-1-usergroups.md): List all the user groups and the details of these groups. 
+- [Sender/Recipient Pattern Management](/resources/configs/_markdown/25-1-senderrecipientpatternmanagement.md): The DLP Sender Recipient Pattern Management APIs lets you       . 
+- [Keywords](/resources/configs/_markdown/25-1-keywords.md): The Keyword API lets you mange DLP keyword lists. 
+- [Policy Export Import](/resources/configs/_markdown/25-1-pac.md): The Policy Export Import API lets you import, export, and preview policies. 
+- [EDM Profile Index](/resources/configs/_markdown/25-1-edmprofileindex.md): The EDM Profile Index API lets you manage EDM profiles. 
+- [Response Rules](/resources/configs/_markdown/25-1-response rules.md): Response Rules
+- [Response Rule Management](/resources/configs/_markdown/25-1-responserulemanagement.md): The DLP Response Rule Management APIs lets you       . 
+- [Incidents](/resources/configs/_markdown/25-1-incidents.md): Incidents
+- [Incident Details](/resources/configs/_markdown/25-1-incidentdetails.md): The DLP Credentials APIs lets you       . 
+- [Incident Helper](/resources/configs/_markdown/25-1-incidenthelper.md): The DLP Incident Helper APIs lets you       . 
+- [Incident Lists](/resources/configs/_markdown/25-1-incidentlists.md): The DLP Incident Lists APIs lets you       . 
+- [Incident Update](/resources/configs/_markdown/25-1-incidentupdate.md): The DLP Incident Update APIs lets you       . 
+- [Incident Deletion](/resources/configs/_markdown/25-1-incidentdeletion.md): The DLP Incident Deletion APIs lets you       . 
+- [Saved Report Details](/resources/configs/_markdown/25-1-savedreportdetails.md): The DLP Saved Report Details API lets you       . 
+- [Storage DLP](/resources/configs/_markdown/25-1-storage.md): Storage DLP
+- [Network Discover Cluster Certificates](/resources/configs/_markdown/25-1-networkdiscoverclustercertificates.md): The DLP Network Discover Cluster Certificates APIs lets you       . 
+- [Network Discover Clusters](/resources/configs/_markdown/25-1-networkdiscoverclusters.md): The DLP Network Discover Clusters APIs lets you       . 
+- [Network Discover Target Management](/resources/configs/_markdown/25-1-networkdiscovertargetmanagement.md): The DLP Network Discover Target Management APIs lets you       . 
+- [Network Discover Target Walk Management](/resources/configs/_markdown/25-1-networkdiscovertargetwalkdetailsandreports.md): The DLP Network Discover Target Walk Management APIs lets you       . 
+- [Network Discover Target Walk Reports](/resources/configs/_markdown/25-1-networkdiscovertargetwalkreports.md): The DLP Network Discover Target Walk Reports APIs lets you       . 
+- [Endpoint DLP](/resources/configs/_markdown/25-1-endpoint.md): Endpoint DLP
+- [Endpoint Certificate Management](/resources/configs/_markdown/25-1-endpointcertificatemanagement.md): The DLP Endpoint Certificate Management APIs lets you       . 
+- [Agent Events](/resources/configs/_markdown/25-1-agentevents.md): The DLP Agent Events APIs lets you manage agent events. 
+- [Application Detection](/resources/configs/_markdown/25-1-applicationdetection.md): Application Detection
+- [Application Detection](/resources/configs/_markdown/25-1-appdetection.md): The DLP Application Detection APIs lets you       . 
+- [New APIs in Data Loss Prevention 16.1](/resources/configs/_markdown/16-1-new.md): New APIs in Data Loss Prevention 16.1
+- [Updated APIs in Data Loss Prevention 16.1](/resources/configs/_markdown/16-1-updated.md): Updated APIs in Data Loss Prevention 16.1
+- [Manage the Enforce Server](/resources/configs/_markdown/16-1-enforceserver.md): Manage the Enforce Server
+- [Enforce Server General Settings](/resources/configs/_markdown/16-1-enforceservergeneralsettings.md): The DLP Enforce Server General Settings APIs lets you       . 
+- [Enforce Server Information](/resources/configs/_markdown/16-1-enforceserverinformation.md): The DLP Enforce Server Information API lets you review information about the Enforce Server. 
+- [Traffic Stats](/resources/configs/_markdown/16-1-trafficstats.md): The Traffic Stats API lets you get statistical data about network traffic for each detection server. 
+- [Role Details](/resources/configs/_markdown/16-1-roledetails.md): The DLP Role Details APIs lets you       . 
+- [User Details](/resources/configs/_markdown/16-1-userdetails.md): The DLP User Details APIs lets you       . 
+- [Enforce Server Credentials](/resources/configs/_markdown/16-1-credentials.md): The DLP Credentials API lets you          .
+- [Audit Log](/resources/configs/_markdown/16-1-auditlog.md): The Audit Log APIs let you list system log details.
+- [Logoff](/resources/configs/_markdown/16-1-logoff.md): The DLP Logoff API lets you       . 
+- [Delete System Events](/resources/configs/_markdown/16-1-deletesystemevents.md): The Delete System Events API lets you delete system events. 
+- [Manage Detection Servers](/resources/configs/_markdown/16-1-detection server.md): Manage Detection Servers
+- [Detection Server Addition](/resources/configs/_markdown/16-1-detectionserveraddition.md): The DLP Detection Server Addition APIs lets you       . 
+- [Detection Server Information](/resources/configs/_markdown/16-1-detectionserverinformation.md): The DLP Detection Server Information APIs lets you       . 
+- [Detection Server Recycle](/resources/configs/_markdown/16-1-detectionserverrecycle.md): The Detection Server Recycle API allows you to recycle multiple detection servers. 
+- [Detection Server Advanced Settings](/resources/configs/_markdown/16-1-serversettings.md): The DLP Server Settings APIs lets you       . 
+- [Policies](/resources/configs/_markdown/16-1-policies.md): Policies
+- [Policy Management](/resources/configs/_markdown/16-1-policymanagement.md): The DLP Policy Management API lets you       . 
+- [Policy Groups](/resources/configs/_markdown/16-1-policygroup.md): The DLP Policy Group API lets you manage policy groups. 
+- [Sender/Recipient Pattern Management](/resources/configs/_markdown/16-1-senderrecipientpatternmanagement.md): The DLP Sender Recipient Pattern Management APIs lets you       . 
+- [Keywords](/resources/configs/_markdown/16-1-keywords.md): The Keyword API lets you mange DLP keyword lists. 
+- [Policy Export Import](/resources/configs/_markdown/16-1-pac.md): The Policy Export Import API lets you import, export, and preview policies. 
+- [EDM Profile Index](/resources/configs/_markdown/16-1-edmprofileindex.md): The EDM Profile Index API lets you manage EDM profiles. 
+- [Response Rules](/resources/configs/_markdown/16-1-response rules.md): Response Rules
+- [Response Rule Management](/resources/configs/_markdown/16-1-responserulemanagement.md): The DLP Response Rule Management APIs lets you       . 
+- [Incidents](/resources/configs/_markdown/16-1-incidents.md): Incidents
+- [Incident Details](/resources/configs/_markdown/16-1-incidentdetails.md): The DLP Credentials APIs lets you       . 
+- [Incident Helper](/resources/configs/_markdown/16-1-incidenthelper.md): The DLP Incident Helper APIs lets you       . 
+- [Incident Lists](/resources/configs/_markdown/16-1-incidentlists.md): The DLP Incident Lists APIs lets you       . 
+- [Incident Update](/resources/configs/_markdown/16-1-incidentupdate.md): The DLP Incident Update APIs lets you       . 
+- [Incident Deletion](/resources/configs/_markdown/16-1-incidentdeletion.md): The DLP Incident Deletion APIs lets you       . 
+- [Saved Report Details](/resources/configs/_markdown/16-1-savedreportdetails.md): The DLP Saved Report Details API lets you       . 
+- [Storage DLP](/resources/configs/_markdown/16-1-storage.md): Storage DLP
+- [Network Discover Cluster Certificates](/resources/configs/_markdown/16-1-networkdiscoverclustercertificates.md): The DLP Network Discover Cluster Certificates APIs lets you       . 
+- [Network Discover Clusters](/resources/configs/_markdown/16-1-networkdiscoverclusters.md): The DLP Network Discover Clusters APIs lets you       . 
+- [Network Discover Target List and Scan Activities](/resources/configs/_markdown/16-1-networkdiscovertargetlistandscanactivities.md): The DLP Network Discover Target List and Scan Activities APIs lets you       . 
+- [Network Discover Target Management](/resources/configs/_markdown/16-1-networkdiscovertargetmanagement.md): The DLP Network Discover Target Management APIs lets you       . 
+- [Network Discover Target Walk Details](/resources/configs/_markdown/16-1-networkdiscovertargetwalkdetailsandreports.md): The DLP Network Discover Target Walk Details and Reports APIs lets you       . 
+- [Network Discover Target Walk Reports](/resources/configs/_markdown/16-1-networkdiscovertargetwalkreports.md): The DLP Network Discover Target Walk Reports APIs lets you       . 
+- [Endpoint DLP](/resources/configs/_markdown/16-1-endpoint.md): Endpoint DLP
+- [Endpoint Certificate Management](/resources/configs/_markdown/16-1-endpointcertificatemanagement.md): The DLP Endpoint Certificate Management APIs lets you       . 
+- [Endpoint Certificate Management](/resources/configs/_markdown/16-1-endpointcertificatemanagement.md): The DLP Endpoint Certificate Management APIs lets you       . 
+- [New APIs in Data Loss Prevention 16.0 RU2](/resources/configs/_markdown/16-0-2-new.md): New APIs in Data Loss Prevention 16.0 RU2
+- [Updated APIs in Data Loss Prevention 16.0 RU2](/resources/configs/_markdown/16-0-2-updated.md): Updated APIs in Data Loss Prevention 16.0 RU2
+- [Deprecated APIs in Data Loss Prevention 16.0 RU2](/resources/configs/_markdown/16-0-2-removed.md): Deprecated APIs in Data Loss Prevention 16.0 RU2
+- [Manage the Enforce Server](/resources/configs/_markdown/16-0-2-enforceserver.md): Manage the Enforce Server
+- [Enforce Server General Settings](/resources/configs/_markdown/16-0-2-enforceservergeneralsettings.md): The DLP Enforce Server General Settings APIs lets you       . 
+- [Enforce Server Information](/resources/configs/_markdown/16-0-2-enforceserverinformation.md): The DLP Enforce Server Information API lets you       . 
+- [Role Details](/resources/configs/_markdown/16-0-2-roledetails.md): The DLP Role Details APIs lets you       . 
+- [User Details](/resources/configs/_markdown/16-0-2-userdetails.md): The DLP User Details APIs lets you       . 
+- [Enforce Server Credentials](/resources/configs/_markdown/16-0-2-credentials.md): The DLP Credentials API lets you          .
+- [Audit Log](/resources/configs/_markdown/16-0-2-auditlog.md): The Audit Log APIs let you list system log details.
+- [Logoff](/resources/configs/_markdown/16-0-2-logoff.md): The DLP Logoff API lets you       . 
+- [Delete System Events](/resources/configs/_markdown/16-0-2-deletesystemevents.md): The Delete System Events API lets you       . 
+- [Detection Server](/resources/configs/_markdown/16-0-2-detection-server.md): Detection Server
+- [Detection Server Addition](/resources/configs/_markdown/16-0-2-detectionserveraddition.md): The DLP Detection Server Addition APIs lets you       . 
+- [Detection Server Information](/resources/configs/_markdown/16-0-2-detectionserverinformation.md): The DLP Detection Server Information APIs lets you       . 
+- [Detection Server Advanced Settings](/resources/configs/_markdown/16-0-2-serversettings.md): The DLP Server Settings APIs lets you       . 
+- [Policies](/resources/configs/_markdown/16-0-2-policies.md): Policies
+- [Policy Management](/resources/configs/_markdown/16-0-2-policymanagement.md): The DLP Policy Management API lets you       . 
+- [Sender/Recipient Pattern Management](/resources/configs/_markdown/16-0-2-senderrecipientpatternmanagement.md): The DLP Sender Recipient Pattern Management APIs lets you       . 
+- [EDM Profile Index](/resources/configs/_markdown/16-0-2-edmprofileindex.md): The EDM Profile Index API lets you manage EDM profiles. 
+- [Response Rules](/resources/configs/_markdown/16-0-2-response-rules.md): Response Rules
+- [Response Rule Management](/resources/configs/_markdown/16-0-2-responserulemanagement.md): The DLP Response Rule Management APIs lets you       . 
+- [Incidents](/resources/configs/_markdown/16-0-2-incidents.md): Incidents
+- [Incident Details](/resources/configs/_markdown/16-0-2-incidentdetails.md): The DLP Credentials APIs lets you       . 
+- [Incident Helper](/resources/configs/_markdown/16-0-2-incidenthelper.md): The DLP Incident Helper APIs lets you       . 
+- [Incident Lists](/resources/configs/_markdown/16-0-2-incidentlists.md): The DLP Incident Lists APIs lets you       . 
+- [Incident Update](/resources/configs/_markdown/16-0-2-incidentupdate.md): The DLP Incident Update APIs lets you       . 
+- [Incident Deletion](/resources/configs/_markdown/16-0-2-incidentdeletion.md): The DLP Incident Deletion APIs lets you       . 
+- [Saved Report Details](/resources/configs/_markdown/16-0-2-savedreportdetails.md): The DLP Saved Report Details API lets you       . 
+- [Storage DLP](/resources/configs/_markdown/16-0-2-storage.md): Storage DLP
+- [Network Discover Cluster Certificates](/resources/configs/_markdown/16-0-2-networkdiscoverclustercertificates.md): The DLP Network Discover Cluster Certificates APIs lets you       . 
+- [Network Discover Clusters](/resources/configs/_markdown/16-0-2-networkdiscoverclusters.md): The DLP Network Discover Clusters APIs lets you       . 
+- [Network Discover Target List and Scan Activities](/resources/configs/_markdown/16-0-2-networkdiscovertargetlistandscanactivities.md): The DLP Network Discover Target List and Scan Activities APIs lets you       . 
+- [Network Discover Target Management](/resources/configs/_markdown/16-0-2-networkdiscovertargetmanagement.md): The DLP Network Discover Target Management APIs lets you       . 
+- [Network Discover Target Walk Details](/resources/configs/_markdown/16-0-2-networkdiscovertargetwalkdetailsandreports.md): The DLP Network Discover Target Walk Details and Reports APIs lets you       . 
+- [Network Discover Target Walk Reports](/resources/configs/_markdown/16-0-2-networkdiscovertargetwalkreports.md): The DLP Network Discover Target Walk Reports APIs lets you       . 
+- [Endpoint DLP](/resources/configs/_markdown/16-0-2-endpoint.md): Endpoint DLP
+- [Endpoint Certificate Management](/resources/configs/_markdown/16-0-2-endpointcertificatemanagement.md): The DLP Endpoint Certificate Management APIs lets you       . 
+- [Manage the Enforce Server](/resources/configs/_markdown/16-0-1-enforceserver.md): Manage the Enforce Server
+- [Enforce Server General Settings](/resources/configs/_markdown/16-0-1-enforceservergeneralsettings.md): The DLP Enforce Server General Settings APIs lets you       . 
+- [Enforce Server Information](/resources/configs/_markdown/16-0-1-enforceserverinformation.md): The DLP Enforce Server Information API lets you       . 
+- [Role Details](/resources/configs/_markdown/16-0-1-roledetails.md): The DLP Role Details APIs lets you       . 
+- [User Details](/resources/configs/_markdown/16-0-1-userdetails.md): The DLP User Details APIs lets you       . 
+- [Enforce Server Credentials](/resources/configs/_markdown/16-0-1-credentials.md): The DLP Credentials API lets you          .
+- [Audit Log](/resources/configs/_markdown/16-0-1-auditlog.md): The Audit Log APIs let you list system log details.
+- [Logoff](/resources/configs/_markdown/16-0-1-logoff.md): The DLP Logoff API lets you       . 
+- [Detection Server](/resources/configs/_markdown/16-0-1-detection server.md): Detection Server
+- [Detection Server Addition](/resources/configs/_markdown/16-0-1-detectionserveraddition.md): The DLP Detection Server Addition APIs lets you       . 
+- [Detection Server Information](/resources/configs/_markdown/16-0-1-detectionserverinformation.md): The DLP Detection Server Information APIs lets you       . 
+- [Policies](/resources/configs/_markdown/16-0-1-policies.md): Policies
+- [Policy Management](/resources/configs/_markdown/16-0-1-policymanagement.md): The DLP Policy Management API lets you       . 
+- [Sender/Recipient Pattern Management](/resources/configs/_markdown/16-0-1-senderrecipientpatternmanagement.md): The DLP Sender Recipient Pattern Management APIs lets you       . 
+- [Response Rules](/resources/configs/_markdown/16-0-1-response rules.md): Response Rules
+- [Response Rule Management](/resources/configs/_markdown/16-0-1-responserulemanagement.md): The DLP Response Rule Management APIs lets you       . 
+- [Incidents](/resources/configs/_markdown/16-0-1-incidents.md): Incidents
+- [Incident Details](/resources/configs/_markdown/16-0-1-incidentdetails.md): The DLP Credentials APIs lets you       . 
+- [Incident Helper](/resources/configs/_markdown/16-0-1-incidenthelper.md): The DLP Incident Helper APIs lets you       . 
+- [Incident Lists](/resources/configs/_markdown/16-0-1-incidentlists.md): The DLP Incident Lists APIs lets you       . 
+- [Incident Update](/resources/configs/_markdown/16-0-1-incidentupdate.md): The DLP Incident Update APIs lets you       . 
+- [Incident Deletion](/resources/configs/_markdown/16-0-1-incidentdeletion.md): The DLP Incident Deletion APIs lets you       . 
+- [Saved Report Details](/resources/configs/_markdown/16-0-1-savedreportdetails.md): The DLP Saved Report Details API lets you       . 
+- [Storage DLP](/resources/configs/_markdown/16-0-1-storage.md): Storage DLP
+- [Network Discover Cluster Certificates](/resources/configs/_markdown/16-0-1-networkdiscoverclustercertificates.md): The DLP Network Discover Cluster Certificates APIs lets you       . 
+- [Network Discover Clusters](/resources/configs/_markdown/16-0-1-networkdiscoverclusters.md): The DLP Network Discover Clusters APIs lets you       . 
+- [Network Discover Target List and Scan Activities](/resources/configs/_markdown/16-0-1-networkdiscovertargetlistandscanactivities.md): The DLP Network Discover Target List and Scan Activities APIs lets you       . 
+- [Network Discover Target Management](/resources/configs/_markdown/16-0-1-networkdiscovertargetmanagement.md): The DLP Network Discover Target Management APIs lets you       . 
+- [Network Discover Target Walk Details](/resources/configs/_markdown/16-0-1-networkdiscovertargetwalkdetailsandreports.md): The DLP Network Discover Target Walk Details and Reports APIs lets you       . 
+- [Network Discover Target Walk Reports](/resources/configs/_markdown/16-0-1-networkdiscovertargetwalkreports.md): The DLP Network Discover Target Walk Reports APIs lets you       . 
+- [Endpoint DLP](/resources/configs/_markdown/16-0-1-endpoint.md): Endpoint DLP
+- [Endpoint Certificate Management](/resources/configs/_markdown/16-0-1-endpointcertificatemanagement.md): The DLP Endpoint Certificate Management APIs lets you       . 
+- [Manage the Enforce Server](/resources/configs/_markdown/16-0-enforceserver.md): Manage the Enforce Server
+- [Enforce Server General Settings](/resources/configs/_markdown/16-0-enforceservergeneralsettings.md): The DLP Enforce Server General Settings APIs lets you       . 
+- [Enforce Server Information](/resources/configs/_markdown/16-0-enforceserverinformation.md): The DLP Enforce Server Information API lets you       . 
+- [Role Details](/resources/configs/_markdown/16-0-roledetails.md): The DLP Role Details APIs lets you       . 
+- [User Details](/resources/configs/_markdown/16-0-userdetails.md): The DLP User Details APIs lets you       . 
+- [Enforce Server Credentials](/resources/configs/_markdown/16-0-credentials.md): The DLP Credentials API lets you          .
+- [Logoff](/resources/configs/_markdown/16-0-logoff.md): The DLP Logoff API lets you       . 
+- [Detection Server](/resources/configs/_markdown/16-0-detection server.md): Detection Server
+- [Detection Server Addition](/resources/configs/_markdown/16-0-detectionserveraddition.md): The DLP Detection Server Addition APIs lets you       . 
+- [Detection Server Information](/resources/configs/_markdown/16-0-detectionserverinformation.md): The DLP Detection Server Information APIs lets you       . 
+- [Policies](/resources/configs/_markdown/16-0-policies.md): Policies
+- [Policy Management](/resources/configs/_markdown/16-0-policymanagement.md): The DLP Policy Management API lets you       . 
+- [Sender/Recipient Pattern Management](/resources/configs/_markdown/16-0-senderrecipientpatternmanagement.md): The DLP Sender Recipient Pattern Management APIs lets you       . 
+- [Response Rules](/resources/configs/_markdown/16-0-response rules.md): Response Rules
+- [Response Rule Management](/resources/configs/_markdown/16-0-responserulemanagement.md): The DLP Response Rule Management APIs lets you       . 
+- [Incidents](/resources/configs/_markdown/16-0-incidents.md): Incidents
+- [Incident Details](/resources/configs/_markdown/16-0-incidentdetails.md): The DLP Credentials APIs lets you       . 
+- [Incident Helper](/resources/configs/_markdown/16-0-incidenthelper.md): The DLP Incident Helper APIs lets you       . 
+- [Incident Lists](/resources/configs/_markdown/16-0-incidentlists.md): The DLP Incident Lists APIs lets you       . 
+- [Incident Update](/resources/configs/_markdown/16-0-incidentupdate.md): The DLP Incident Update APIs lets you       . 
+- [Incident Deletion](/resources/configs/_markdown/16-0-incidentdeletion.md): The DLP Incident Deletion APIs lets you       . 
+- [Saved Report Details](/resources/configs/_markdown/16-0-savedreportdetails.md): The DLP Saved Report Details API lets you       . 
+- [Storage DLP](/resources/configs/_markdown/16-0-storage.md): Storage DLP
+- [Network Discover Cluster Certificates](/resources/configs/_markdown/16-0-networkdiscoverclustercertificates.md): The DLP Network Discover Cluster Certificates APIs lets you       . 
+- [Network Discover Clusters](/resources/configs/_markdown/16-0-networkdiscoverclusters.md): The DLP Network Discover Clusters APIs lets you       . 
+- [Network Discover Target List and Scan Activities](/resources/configs/_markdown/16-0-networkdiscovertargetlistandscanactivities.md): The DLP Network Discover Target List and Scan Activities APIs lets you       . 
+- [Network Discover Target Management](/resources/configs/_markdown/16-0-networkdiscovertargetmanagement.md): The DLP Network Discover Target Management APIs lets you       . 
+- [Network Discover Target Walk Details](/resources/configs/_markdown/16-0-networkdiscovertargetwalkdetailsandreports.md): The DLP Network Discover Target Walk Details and Reports APIs lets you       . 
+- [Network Discover Target Walk Reports](/resources/configs/_markdown/16-0-networkdiscovertargetwalkreports.md): The DLP Network Discover Target Walk Reports APIs lets you       . 
+- [Endpoint DLP](/resources/configs/_markdown/16-0-endpoint.md): Endpoint DLP
+- [Endpoint Certificate Management](/resources/configs/_markdown/16-0-endpointcertificatemanagement.md): The DLP Endpoint Certificate Management APIs lets you       . 
+
+## Cloud Data Loss Prevention
+
+> Monitor and protect sensitive data across endpoints, networks, and on-premises storage systems.
+
+- [CloudDLP Authentication](/resources/configs/_markdown/clouddlp_auth.md): The Symantec Endpoint Security Authentication API is utilized to generate an access token used for subsequent API calls.
+- [Custom Groups](/resources/configs/_markdown/casb_custom_groups .md): The Symantec Cloud Access Broker APIs let you manage Custom Groups.
+- [Data Identifiers](/resources/configs/_markdown/casb_data_identifiers .md): The Symantec Cloud Access Broker APIs let you manage your Data Identifiers.
+- [Incidents](/resources/configs/_markdown/casb_incidents .md): The Symantec Cloud Access Broker APIs let you manage you CASB Incidents.
+- [Index Management](/resources/configs/_markdown/casb_index_mgmt.md): DLP Index Management APIs called by authorized customers for automation purposes.
+- [Profiles](/resources/configs/_markdown/casb_profiles .md): The Symantec Cloud Access Broker APIs let you manage your CASB Profiles.
+- [Reusable Patterns](/resources/configs/_markdown/casb_resusable_patterns .md): The Symantec Cloud Access Broker APIs let you manage you CASB Reusable Patterns.
+
+## Cloud Secure Web Gateway
+
+> Protect users from web threats and enforce data compliance policies regardless of location.
+
+- [Cloud SWG APIs](/resources/configs/_markdown/wss_about.md): Cloud SWG APIs
+- [API Authentication](/resources/configs/_markdown/wss_auth.md): API Authentication
+- [Cloud SWG URI Scheme](/resources/configs/_markdown/wss_uri-scheme.md): Cloud SWG URI Scheme
+- [Dedicated IPs](/resources/configs/_markdown/dedicated_ips.md): Use the API to manage Cloud SWG Dedicated IP addresses.
+- [Locations](/resources/configs/_markdown/location_management.md): Manage the endpoints for Cloud SWG locations that you use to connect fixed sites to the service.
+- [Policy Lists](/resources/configs/_markdown/policy_management.md): Perform actions on policy lists owned by the customer, including retrieval, creation, and modification.
+
+## Zero Trust Network Access
+
+> Configure secure and granular access to internal resources.
+
+- [About the ZTNA APIs](/resources/configs/_markdown/ztna_about.md): Overview of Zero Trust Network Access APIs
+- [Authenticate to the API](/resources/configs/_markdown/ztna_auth.md): Authentication and authorization for ZTNA APIs
+- [What's New in ZTNA APIs v2](/resources/configs/_markdown/ztna_whats_new.md): What's New in ZTNA APIs v2
+- [Sites](/resources/configs/_markdown/ztna_sites.md): Create and manage ZTNA sites, including the new Orchestrator authentication mode.
+- [Site Registration Keys](/resources/configs/_markdown/ztna_site_reg_keys.md): Manage long-lived tokens for automated connector registration in Orchestrator-mode sites.
+- [Connectors](/resources/configs/_markdown/ztna_connectors.md): Create and manage ZTNA connectors, including deployment commands and environment variables.
+- [Applications](/resources/configs/_markdown/ztna_apps.md): Create and manage ZTNA applications, bind them to sites, and monitor application health.
+- [Access and Activity Policies](/resources/configs/_markdown/ztna_policies.md): Create and manage ZTNA access and activity policies, bind policies to applications and entities.
+- [Shared Objects](/resources/configs/_markdown/ztna_shared_objects.md): Create and manage shared objects that can be reused across ZTNA policies.
+- [Collections](/resources/configs/_markdown/ztna_collections.md): Create and manage collections of sites, and manage role bindings for tenant, collection, and site scopes.
+- [DNS Resiliency](/resources/configs/_markdown/ztna_dns.md): Create and manage DNS groups and servers for ZTNA DNS resiliency and failover.
+- [Identity Providers](/resources/configs/_markdown/ztna_idps.md): Retrieve the list of configured identity providers for your ZTNA tenant.
+- [Users](/resources/configs/_markdown/ztna_users.md): Create and manage ZTNA users, including local users and users from external identity providers.
+- [Groups](/resources/configs/_markdown/ztna_groups.md): Create and manage ZTNA groups, assign users to groups, and search groups by identity provider.
+- [SSH Clients](/resources/configs/_markdown/ztna_ssh.md): Retrieve SSH client information for users in your ZTNA tenant.
+- [SCIM](/resources/configs/_markdown/ztna_scim.md): Manage ZTNA users and groups using the SCIM 2.0 protocol for automated provisioning.
+- [Cloud Integrations](/resources/configs/_markdown/ztna_cloud_integ.md): Create and manage cloud integration configurations for auto-discovery of cloud resources.
+- [Audit Logs](/resources/configs/_markdown/ztna_audit.md): Search and retrieve audit log events for your ZTNA tenant.
+- [Forensic Logs](/resources/configs/_markdown/ztna_forensic.md): Search and retrieve forensics log events for your ZTNA tenant.
+- [Observability](/resources/configs/_markdown/ztna_observability.md): Automated connector management and system health monitoring
+
+## Optional
+
+- [CBX – Full Reference](/resources/configs/_llms/cbx-full.llms.txt): All CBX API pages inlined into a single file for bulk LLM ingestion
+- [CBX – Product Index](/resources/configs/_llms/cbx.llms.txt): Focused index for CBX including workflow chains
+- [Endpoint Security – Full Reference](/resources/configs/_llms/ses-full.llms.txt): All Endpoint Security API pages inlined into a single file for bulk LLM ingestion
+- [Endpoint Security – Product Index](/resources/configs/_llms/ses.llms.txt): Focused index for Endpoint Security including workflow chains
+- [Endpoint Protection – Full Reference](/resources/configs/_llms/sepm-full.llms.txt): All Endpoint Protection API pages inlined into a single file for bulk LLM ingestion
+- [Endpoint Protection – Product Index](/resources/configs/_llms/sepm.llms.txt): Focused index for Endpoint Protection including workflow chains
+- [Endpoint Detection and Response – Full Reference](/resources/configs/_llms/edr-full.llms.txt): All Endpoint Detection and Response API pages inlined into a single file for bulk LLM ingestion
+- [Endpoint Detection and Response – Product Index](/resources/configs/_llms/edr.llms.txt): Focused index for Endpoint Detection and Response including workflow chains
+- [Data Center Security – Full Reference](/resources/configs/_llms/dcs-full.llms.txt): All Data Center Security API pages inlined into a single file for bulk LLM ingestion
+- [Data Center Security – Product Index](/resources/configs/_llms/dcs.llms.txt): Focused index for Data Center Security including workflow chains
+- [Protection Engine – Full Reference](/resources/configs/_llms/spe-full.llms.txt): All Protection Engine API pages inlined into a single file for bulk LLM ingestion
+- [Protection Engine – Product Index](/resources/configs/_llms/spe.llms.txt): Focused index for Protection Engine including workflow chains
+- [Data Loss Prevention – Full Reference](/resources/configs/_llms/dlp-full.llms.txt): All Data Loss Prevention API pages inlined into a single file for bulk LLM ingestion
+- [Data Loss Prevention – Product Index](/resources/configs/_llms/dlp.llms.txt): Focused index for Data Loss Prevention including workflow chains
+- [Cloud Data Loss Prevention – Full Reference](/resources/configs/_llms/casb-full.llms.txt): All Cloud Data Loss Prevention API pages inlined into a single file for bulk LLM ingestion
+- [Cloud Data Loss Prevention – Product Index](/resources/configs/_llms/casb.llms.txt): Focused index for Cloud Data Loss Prevention including workflow chains
+- [Cloud Secure Web Gateway – Full Reference](/resources/configs/_llms/wss-full.llms.txt): All Cloud Secure Web Gateway API pages inlined into a single file for bulk LLM ingestion
+- [Cloud Secure Web Gateway – Product Index](/resources/configs/_llms/wss.llms.txt): Focused index for Cloud Secure Web Gateway including workflow chains
+- [Zero Trust Network Access – Full Reference](/resources/configs/_llms/ztna-full.llms.txt): All Zero Trust Network Access API pages inlined into a single file for bulk LLM ingestion
+- [Zero Trust Network Access – Product Index](/resources/configs/_llms/ztna.llms.txt): Focused index for Zero Trust Network Access including workflow chains

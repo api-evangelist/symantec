@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Symantec Endpoint Protection Manager Administrators Authentication API",
+    "version": "14.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authenticate to SEPM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/identity/authenticate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticates with SEPM using username, password, and domain credentials. Returns a Bearer token and refresh token for subsequent API calls. Requires SysAdmin role for full API access."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

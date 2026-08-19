@@ -1,0 +1,194 @@
+{
+  "item": [
+    {
+      "id": "0c46a27e-74f5-41cf-897e-5c067ef6a811",
+      "name": "API Version",
+      "description": {
+        "content": "API version information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3b846a52-d565-4a50-96f6-526d95d398e8",
+          "name": "Get API Version",
+          "request": {
+            "name": "Get API Version",
+            "description": {
+              "content": "Returns the current SEPM REST API version information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api-stats",
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "SEPM server hostname or IP address",
+                  "type": "any",
+                  "value": "{{sepm-host}}",
+                  "key": "sepm-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "26387450-312b-4173-96a8-29fbfe73d46d",
+              "name": "API version information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api-stats",
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "SEPM server hostname or IP address",
+                      "type": "any",
+                      "value": "{{sepm-host}}",
+                      "key": "sepm-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"string\",\n  \"revision\": 3868\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "613c6eac-c4c9-475c-8331-6ca9772d153e",
+              "name": "Unauthorized - missing or expired Bearer token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api-stats",
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "SEPM server hostname or IP address",
+                      "type": "any",
+                      "value": "{{sepm-host}}",
+                      "key": "sepm-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 782,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "SEPM server hostname or IP address",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost",
+      "key": "sepm-host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{sepm-host}}:8446/sepm/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "86a8b611-6ca4-4a5c-984a-ad0adb563147",
+    "name": "Symantec Endpoint Protection Manager Administrators API Version API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Symantec Endpoint Protection Manager (SEPM) REST API provides programmatic access to manage endpoint protection infrastructure. Enables management of computers (endpoints), groups, policies, server administrators, API versioning, and device lifecycle operations. Authentication uses OAuth 2.0 with username/password credentials via the identity endpoint, returning a Bearer token for subsequent calls.\n\nContact Support:\n Name: Broadcom Support",
+      "type": "text/plain"
+    }
+  }
+}

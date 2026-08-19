@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Symantec Endpoint Protection Manager Administrators Computers API",
+    "version": "14.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Computers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Computers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/computers",
+            "params": [
+              {
+                "name": "computerName",
+                "value": "",
+                "type": "query",
+                "description": "Filter computers by name"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "pageIndex",
+                "value": "",
+                "type": "query",
+                "description": "Page number (1-indexed)"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field and direction"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieves a paginated list of computers (endpoints) managed by SEPM. Supports filtering by computer name and pagination. Returns device details including hostname, OS, SEP version, and last update time."
+        },
+        {
+          "info": {
+            "name": "Remove Computer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/computers/:computerId",
+            "params": [
+              {
+                "name": "computerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique computer identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a computer from SEPM management. The computer's endpoint protection client is unmanaged upon removal."
+        },
+        {
+          "info": {
+            "name": "Move Computer to Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{sepm-host}:8446/sepm/api/v1/computers/:computerId/group",
+            "params": [
+              {
+                "name": "computerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique computer identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Moves a computer to a different group within SEPM. The computer's policy assignments change based on the new group's policy settings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

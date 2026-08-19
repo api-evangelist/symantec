@@ -1,0 +1,747 @@
+{
+  "item": [
+    {
+      "id": "5d3f76db-0ebe-4b69-842e-1b44bb682f0a",
+      "name": "Computers",
+      "description": {
+        "content": "Endpoint computer management and querying",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "339881e6-2a34-4233-8e41-b2daf7183fae",
+          "name": "List Computers",
+          "request": {
+            "name": "List Computers",
+            "description": {
+              "content": "Retrieves a paginated list of computers (endpoints) managed by SEPM. Supports filtering by computer name and pagination. Returns device details including hostname, OS, SEP version, and last update time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "computers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "computerName",
+                  "value": "<string>",
+                  "description": "Filter computers by name"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25",
+                  "description": "Number of results per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageIndex",
+                  "value": "1",
+                  "description": "Page number (1-indexed)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort field and direction"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "SEPM server hostname or IP address",
+                  "type": "any",
+                  "value": "{{sepm-host}}",
+                  "key": "sepm-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0a1306a2-7f4d-43e5-b339-27c7a802e65e",
+              "name": "Paginated list of computers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "computerName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageIndex",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "SEPM server hostname or IP address",
+                      "type": "any",
+                      "value": "{{sepm-host}}",
+                      "key": "sepm-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"content\": [\n    {\n      \"uniqueId\": \"string\",\n      \"computerName\": \"string\",\n      \"domainOrWorkgroup\": \"string\",\n      \"ipAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"macAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"operatingSystem\": \"string\",\n      \"agentVersion\": \"string\",\n      \"lastScanTime\": 6402,\n      \"lastUpdateTime\": 34,\n      \"infected\": true,\n      \"groupId\": \"string\",\n      \"groupName\": \"string\",\n      \"onlineStatus\": 9776\n    },\n    {\n      \"uniqueId\": \"string\",\n      \"computerName\": \"string\",\n      \"domainOrWorkgroup\": \"string\",\n      \"ipAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"macAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"operatingSystem\": \"string\",\n      \"agentVersion\": \"string\",\n      \"lastScanTime\": 3029,\n      \"lastUpdateTime\": 3560,\n      \"infected\": true,\n      \"groupId\": \"string\",\n      \"groupName\": \"string\",\n      \"onlineStatus\": 9278\n    }\n  ],\n  \"number\": 2839,\n  \"size\": 6773,\n  \"sort\": \"string\",\n  \"totalElements\": 9312,\n  \"totalPages\": 8530\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8ff9847-ecb9-4d66-87c0-15297608cd20",
+              "name": "Unauthorized - missing or expired Bearer token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "computerName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageIndex",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "SEPM server hostname or IP address",
+                      "type": "any",
+                      "value": "{{sepm-host}}",
+                      "key": "sepm-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 4120,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "842985d3-2802-4443-9e63-5e5feb4a5036",
+          "name": "Remove Computer",
+          "request": {
+            "name": "Remove Computer",
+            "description": {
+              "content": "Removes a computer from SEPM management. The computer's endpoint protection client is unmanaged upon removal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "computers",
+                ":computerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "computerId",
+                  "description": "(Required) Unique computer identifier"
+                },
+                {
+                  "description": "SEPM server hostname or IP address",
+                  "type": "any",
+                  "value": "{{sepm-host}}",
+                  "key": "sepm-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1067e686-31ae-4829-b0a5-e24410ffce0f",
+              "name": "Computer removed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computers",
+                    ":computerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "computerId",
+                      "description": "(Required) Unique computer identifier"
+                    },
+                    {
+                      "description": "SEPM server hostname or IP address",
+                      "type": "any",
+                      "value": "{{sepm-host}}",
+                      "key": "sepm-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8882ba61-232d-4247-8afe-5a95e4eaf12c",
+              "name": "Unauthorized - missing or expired Bearer token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computers",
+                    ":computerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "computerId",
+                      "description": "(Required) Unique computer identifier"
+                    },
+                    {
+                      "description": "SEPM server hostname or IP address",
+                      "type": "any",
+                      "value": "{{sepm-host}}",
+                      "key": "sepm-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 4120,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db2d9aa2-f946-4183-96c8-35ef3fb7aaec",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computers",
+                    ":computerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "computerId",
+                      "description": "(Required) Unique computer identifier"
+                    },
+                    {
+                      "description": "SEPM server hostname or IP address",
+                      "type": "any",
+                      "value": "{{sepm-host}}",
+                      "key": "sepm-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 4120,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a862c409-3dd7-4988-ae1c-1c5ed8a3c8c2",
+          "name": "Move Computer to Group",
+          "request": {
+            "name": "Move Computer to Group",
+            "description": {
+              "content": "Moves a computer to a different group within SEPM. The computer's policy assignments change based on the new group's policy settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "computers",
+                ":computerId",
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "computerId",
+                  "description": "(Required) Unique computer identifier"
+                },
+                {
+                  "description": "SEPM server hostname or IP address",
+                  "type": "any",
+                  "value": "{{sepm-host}}",
+                  "key": "sepm-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"targetGroupId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3dc07f46-e14d-4111-acb3-31803854db88",
+              "name": "Computer moved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computers",
+                    ":computerId",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "computerId",
+                      "description": "(Required) Unique computer identifier"
+                    },
+                    {
+                      "description": "SEPM server hostname or IP address",
+                      "type": "any",
+                      "value": "{{sepm-host}}",
+                      "key": "sepm-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetGroupId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "696a59bd-c31c-4c95-8600-c903222e67b0",
+              "name": "Unauthorized - missing or expired Bearer token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computers",
+                    ":computerId",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "computerId",
+                      "description": "(Required) Unique computer identifier"
+                    },
+                    {
+                      "description": "SEPM server hostname or IP address",
+                      "type": "any",
+                      "value": "{{sepm-host}}",
+                      "key": "sepm-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetGroupId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 4120,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c969ea91-2203-412e-b6f8-f50b74b695ec",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computers",
+                    ":computerId",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "computerId",
+                      "description": "(Required) Unique computer identifier"
+                    },
+                    {
+                      "description": "SEPM server hostname or IP address",
+                      "type": "any",
+                      "value": "{{sepm-host}}",
+                      "key": "sepm-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetGroupId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 4120,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "SEPM server hostname or IP address",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost",
+      "key": "sepm-host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{sepm-host}}:8446/sepm/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ec3a3ec4-819c-47f8-a13d-4d17baeb5be8",
+    "name": "Symantec Endpoint Protection Manager Administrators Computers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Symantec Endpoint Protection Manager (SEPM) REST API provides programmatic access to manage endpoint protection infrastructure. Enables management of computers (endpoints), groups, policies, server administrators, API versioning, and device lifecycle operations. Authentication uses OAuth 2.0 with username/password credentials via the identity endpoint, returning a Bearer token for subsequent calls.\n\nContact Support:\n Name: Broadcom Support",
+      "type": "text/plain"
+    }
+  }
+}
