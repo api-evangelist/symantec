@@ -47,6 +47,14 @@ apis:
   - Cloud Security
   - Devices
   - Endpoint Security
+  - Event
+  - Incidents
+  - SES
+  tags_raw:
+  - Behavioral Analytics
+  - Cloud Security
+  - Devices
+  - Endpoint Security
   - Events
   - Incidents
   - SES
@@ -159,6 +167,8 @@ apis:
     https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
   baseURL: https://{sepm-host}:8446/sepm/api/v1
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
