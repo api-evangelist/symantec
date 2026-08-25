@@ -1,10 +1,9 @@
 aid: symantec
 name: Symantec
-description: >-
-  Symantec (now part of Broadcom) is a leading enterprise cybersecurity company providing endpoint security, threat
-  detection, data loss prevention, identity security, and network protection products. Symantec offers REST APIs for
-  Endpoint Protection Manager (SEPM), Endpoint Security Cloud (SES), Endpoint Detection and Response (EDR), Data Loss
-  Prevention (DLP), and the Integrated Cyber Defense Manager (ICDm) platform.
+description: Symantec (now part of Broadcom) is a leading enterprise cybersecurity company providing endpoint security,
+  threat detection, data loss prevention, identity security, and network protection products. Symantec offers REST
+  APIs for Endpoint Protection Manager (SEPM), Endpoint Security Cloud (SES), Endpoint Detection and Response (EDR),
+  Data Loss Prevention (DLP), and the Integrated Cyber Defense Manager (ICDm) platform.
 type: Index
 accessModel:
   pricing: enterprise
@@ -21,26 +20,25 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/symantec.png
 tags:
-  - Broadcom
-  - Cybersecurity
-  - DLP
-  - EDR
-  - Endpoint Protection
-  - Endpoint Security
-  - Security
-  - Symantec
-  - Fortune 500
+- Broadcom
+- Cybersecurity
+- DLP
+- EDR
+- Endpoint Protection
+- Endpoint Security
+- Security
+- Symantec
+- Fortune 500
 url: https://raw.githubusercontent.com/api-evangelist/symantec/refs/heads/main/apis.yml
 created: '2026-05-03'
-modified: '2026-05-19'
+modified: '2026-08-21'
 specificationVersion: '0.23'
 apis:
 - aid: symantec:ses-api
   name: Symantec Endpoint Security API
-  description: >-
-    The Symantec Endpoint Security (SES) REST API provides access to cloud-based endpoint security management
-    including device inventory, threat events, incident management, and behavioral analytics. Requires
-    OAuth 2.0 authentication. Documentation at apidocs.securitycloud.symantec.com.
+  description: The Symantec Endpoint Security (SES) REST API provides access to cloud-based endpoint security management
+    including device inventory, threat events, incident management, and behavioral analytics. Requires OAuth 2.0
+    authentication. Documentation at apidocs.securitycloud.symantec.com.
   humanURL: https://apidocs.securitycloud.symantec.com/
   tags:
   - Behavioral Analytics
@@ -62,14 +60,12 @@ apis:
   - type: Documentation
     url: https://apidocs.securitycloud.symantec.com/
   - type: Documentation
-    url: >-
-      https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-security/sescloud/APIs/accessing-the-api-reference-v125094769-d4155e11.html
+    url: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-security/sescloud/APIs/accessing-the-api-reference-v125094769-d4155e11.html
 - aid: symantec:symantec-edr-api
   name: Symantec Endpoint Detection and Response API
-  description: >-
-    The Symantec EDR REST API enables programmatic access to endpoint detection and response capabilities
-    including incident management, threat hunting, forensics, and entity queries. Uses OAuth 2.0 with
-    client credentials grant type.
+  description: The Symantec EDR REST API enables programmatic access to endpoint detection and response capabilities
+    including incident management, threat hunting, forensics, and entity queries. Uses OAuth 2.0 with client credentials
+    grant type.
   humanURL: https://apidocs.symantec.com/home/SymantecEDR_4.2
   tags:
   - EDR
@@ -82,10 +78,9 @@ apis:
     url: https://apidocs.symantec.com/home/SymantecEDR_4.2
 - aid: symantec:symantec-dlp-api
   name: Symantec Data Loss Prevention API
-  description: >-
-    The Symantec DLP REST API enables integration with the DLP Enforce platform for incident management,
-    policy management, and data discovery. Supports retrieving incidents, updating remediation status,
-    and managing DLP policies.
+  description: The Symantec DLP REST API enables integration with the DLP Enforce platform for incident management,
+    policy management, and data discovery. Supports retrieving incidents, updating remediation status, and managing
+    DLP policies.
   humanURL: https://apidocs.symantec.com/home/DLP15.7
   tags:
   - Compliance
@@ -99,8 +94,7 @@ apis:
 - aid: symantec:symantec-administrators-api
   name: Symantec Administrators API
   description: SEPM administrator account management
-  humanURL: >-
-    https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
+  humanURL: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
   baseURL: https://{sepm-host}:8446/sepm/api/v1
   tags:
   - Administrators
@@ -108,15 +102,13 @@ apis:
   - type: OpenAPI
     url: openapi/symantec-administrators-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
+    url: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
   - type: Documentation
     url: https://apidocs.symantec.com/home/SAEP
 - aid: symantec:symantec-api-version-api
   name: Symantec API Version API
   description: API version information
-  humanURL: >-
-    https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
+  humanURL: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
   baseURL: https://{sepm-host}:8446/sepm/api/v1
   tags:
   - API Version
@@ -124,15 +116,13 @@ apis:
   - type: OpenAPI
     url: openapi/symantec-api-version-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
+    url: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
   - type: Documentation
     url: https://apidocs.symantec.com/home/SAEP
 - aid: symantec:symantec-authentication-api
   name: Symantec Authentication API
   description: OAuth 2.0 authentication endpoints
-  humanURL: >-
-    https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
+  humanURL: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
   baseURL: https://{sepm-host}:8446/sepm/api/v1
   tags:
   - Authentication
@@ -140,15 +130,13 @@ apis:
   - type: OpenAPI
     url: openapi/symantec-authentication-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
+    url: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
   - type: Documentation
     url: https://apidocs.symantec.com/home/SAEP
 - aid: symantec:symantec-computers-api
   name: Symantec Computers API
   description: Endpoint computer management and querying
-  humanURL: >-
-    https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
+  humanURL: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
   baseURL: https://{sepm-host}:8446/sepm/api/v1
   tags:
   - Computers
@@ -156,15 +144,13 @@ apis:
   - type: OpenAPI
     url: openapi/symantec-computers-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
+    url: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
   - type: Documentation
     url: https://apidocs.symantec.com/home/SAEP
 - aid: symantec:symantec-groups-api
   name: Symantec Groups API
   description: SEPM group management
-  humanURL: >-
-    https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
+  humanURL: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
   baseURL: https://{sepm-host}:8446/sepm/api/v1
   tags:
   - Group
@@ -174,47 +160,73 @@ apis:
   - type: OpenAPI
     url: openapi/symantec-groups-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
+    url: https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/APIsSEP/Symantec-Endpoint-Security-API-commands1.html
   - type: Documentation
     url: https://apidocs.symantec.com/home/SAEP
 common:
-  - type: AgenticAccess
-    url: agentic-access/symantec-agentic-access.yml
-  - type: DomainSecurity
-    url: security/symantec-domain-security.yml
-  - type: Authentication
-    url: authentication/symantec-authentication.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/symantec
-  - type: Website
-    url: https://www.broadcom.com/products/cybersecurity/endpoint
-  - type: APIDocumentation
-    url: https://apidocs.securitycloud.symantec.com/
-  - type: APIDocumentation
-    url: https://apidocs.symantec.com/
-  - type: Documentation
-    url: https://techdocs.broadcom.com/us/en/symantec-security-software
-  - type: Support
-    url: https://support.broadcom.com
-  - type: Community
-    url: https://community.broadcom.com/symantecenterprise
-  - type: GitHub
-    url: https://github.com/Symantec
-  - type: Login
-    url: https://sep.securitycloud.symantec.com
-  - type: TermsOfService
-    url: https://www.broadcom.com/company/legal/terms-of-use
-  - type: PrivacyPolicy
-    url: https://www.broadcom.com/company/legal/privacy
-  - type: StatusPage
-    url: https://status.broadcom.com/services/symantec-endpoint-security-enterprise/
-  - type: Blog
-    url: https://www.broadcom.com/blog/category/cybersecurity
-  - type: TechDocs
-    url: https://techdocs.broadcom.com
-  - type: LlmsText
-    url: https://apidocs.securitycloud.symantec.com/llms.txt
+- type: ParentCompany
+  url: https://apis.io/providers/broadcom/
+  name: Broadcom
+  x-relationship: acquisition
+  x-generated-by: broadcom-family:2026-08-21
+  x-acquired: 2019
+- type: AgenticAccess
+  url: agentic-access/symantec-agentic-access.yml
+- type: DomainSecurity
+  url: security/symantec-domain-security.yml
+- type: Authentication
+  url: authentication/symantec-authentication.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/company/symantec
+- type: Website
+  url: https://www.broadcom.com/products/cybersecurity/endpoint
+- type: APIDocumentation
+  url: https://apidocs.securitycloud.symantec.com/
+- type: APIDocumentation
+  url: https://apidocs.symantec.com/
+- type: Documentation
+  url: https://techdocs.broadcom.com/us/en/symantec-security-software
+- type: Support
+  url: https://support.broadcom.com
+- type: Community
+  url: https://community.broadcom.com/symantecenterprise
+- type: GitHub
+  url: https://github.com/Symantec
+- type: Login
+  url: https://sep.securitycloud.symantec.com
+- type: TermsOfService
+  url: https://www.broadcom.com/company/legal/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.broadcom.com/company/legal/privacy
+- type: StatusPage
+  url: https://status.broadcom.com/services/symantec-endpoint-security-enterprise/
+- type: Blog
+  url: https://www.broadcom.com/blog/category/cybersecurity
+- type: TechDocs
+  url: https://techdocs.broadcom.com
+- type: LlmsText
+  url: https://apidocs.securitycloud.symantec.com/llms.txt
+- type: Subsidiary
+  url: https://apis.io/providers/bluecoat-symantec/
+  name: Bluecoat (Symantec)
+  x-relationship: acquisition
+  x-generated-by: broadcom-family:2026-08-21
+  x-acquired: 2016
+- type: Subsidiary
+  url: https://apis.io/providers/brightmail/
+  name: Brightmail
+  x-relationship: acquisition
+  x-generated-by: broadcom-family:2026-08-21
+  x-acquired: 2004
+- type: Subsidiary
+  url: https://apis.io/providers/fireglass/
+  name: Fireglass
+  x-relationship: acquisition
+  x-generated-by: broadcom-family:2026-08-21
+  x-acquired: 2017
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-parent: broadcom
+x-relationship: acquisition
+x-acquired: 2019
