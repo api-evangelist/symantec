@@ -5,6 +5,18 @@ description: Symantec (now part of Broadcom) is a leading enterprise cybersecuri
   APIs for Endpoint Protection Manager (SEPM), Endpoint Security Cloud (SES), Endpoint Detection and Response (EDR),
   Data Loss Prevention (DLP), and the Integrated Cyber Defense Manager (ICDm) platform.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
