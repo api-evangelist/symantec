@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Symantec Endpoint Protection Manager Administrators Computers API
+  title: Symantec Endpoint Protection Manager Computers API
   description: The Symantec Endpoint Protection Manager (SEPM) REST API provides programmatic access to manage endpoint protection infrastructure. Enables management of computers (endpoints), groups, policies, server administrators, API versioning, and device lifecycle operations. Authentication uses OAuth 2.0 with username/password credentials via the identity endpoint, returning a Bearer token for subsequent calls.
   version: '14.0'
   contact:
@@ -120,26 +120,13 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    ComputerListResponse:
+    Error:
       type: object
       properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Computer'
-        number:
+        errorCode:
           type: integer
-          description: Current page number
-        size:
-          type: integer
-          description: Page size
-        sort:
+        errorMessage:
           type: string
-        totalElements:
-          type: integer
-          description: Total number of matching computers
-        totalPages:
-          type: integer
     Computer:
       type: object
       properties:
@@ -186,13 +173,26 @@ components:
         onlineStatus:
           type: integer
           description: Online status (1=online, 0=offline)
-    Error:
+    ComputerListResponse:
       type: object
       properties:
-        errorCode:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Computer'
+        number:
           type: integer
-        errorMessage:
+          description: Current page number
+        size:
+          type: integer
+          description: Page size
+        sort:
           type: string
+        totalElements:
+          type: integer
+          description: Total number of matching computers
+        totalPages:
+          type: integer
   responses:
     NotFound:
       description: Resource not found

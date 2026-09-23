@@ -1,15 +1,11 @@
 {
   "provider": "symantec",
   "sources": [
-    "symantec-administrators-api-openapi.yml",
-    "symantec-api-version-api-openapi.yml",
-    "symantec-authentication-api-openapi.yml",
-    "symantec-computers-api-openapi.yml",
-    "symantec-groups-api-openapi.yml"
+    "_original/symantec-sepm-api-openapi.yml"
   ],
   "outputs": [
-    "symantec-administrators-api-openapi.yml",
     "symantec-api-version-api-openapi.yml",
+    "symantec-administrators-api-openapi.yml",
     "symantec-authentication-api-openapi.yml",
     "symantec-computers-api-openapi.yml",
     "symantec-groups-api-openapi.yml"
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "symantec-sepm-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "symantec-administrators-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "symantec-api-version-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "symantec-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "symantec-computers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "symantec-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

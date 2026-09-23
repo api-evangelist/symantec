@@ -1,7 +1,9 @@
 ---
 title: Broadcom Introduces Industry's First Incident Prediction ...
 url: https://cybersecurityasia.net/broadcom-first-incident-predict-capability/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Symantec" press release artificial intelligence'
 position: 5
 source: serpapi-google

@@ -1,7 +1,9 @@
 ---
 title: Broadcom Completes Acquisition of Symantec Enterprise ...
 url: https://www.prnewswire.com/news-releases/broadcom-completes-acquisition-of-symantec-enterprise-security-business-300950721.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Symantec" press release artificial intelligence'
 position: 4
 source: serpapi-google

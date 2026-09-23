@@ -1,7 +1,9 @@
 ---
 title: Cyber Security - Symantec Enterprise Cloud
 url: https://jp.broadcom.com/products/cybersecurity?ver=1.11.4
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Symantec" press release artificial intelligence'
 position: 3
 source: serpapi-google

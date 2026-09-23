@@ -1,7 +1,9 @@
 ---
 title: Press Releases | Gen Digital
 url: https://newsroom.gendigital.com/Symantec-Targeted-Attack-Analytics-Enables-Customers-to-Uncover-the-Most-Sophisticated-and-Dangerous-Cyber-Attacks
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Symantec" press release artificial intelligence'
 position: 1
 source: serpapi-google
