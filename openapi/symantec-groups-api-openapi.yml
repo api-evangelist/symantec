@@ -88,7 +88,44 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Unauthorized - missing or expired Bearer token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    GroupListResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    CreateGroupRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Group name
+        description:
+          type: string
+          description: Group description
     Error:
       type: object
       properties:
@@ -117,43 +154,6 @@ components:
         created:
           type: integer
           description: Unix timestamp of group creation
-    CreateGroupRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Group name
-        description:
-          type: string
-          description: Group description
-    GroupListResponse:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized - missing or expired Bearer token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     BearerAuth:
       type: http

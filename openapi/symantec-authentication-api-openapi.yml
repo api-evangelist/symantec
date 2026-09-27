@@ -47,6 +47,19 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Unauthorized - missing or expired Bearer token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     AuthResponse:
       type: object
@@ -61,13 +74,6 @@ components:
         refreshToken:
           type: string
           description: Refresh token for obtaining new access tokens
-    Error:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-        errorMessage:
-          type: string
     AuthRequest:
       type: object
       required:
@@ -84,19 +90,13 @@ components:
         domain:
           type: string
           description: Domain name (can be empty string for default domain)
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized - missing or expired Bearer token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

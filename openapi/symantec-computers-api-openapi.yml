@@ -119,14 +119,40 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Unauthorized - missing or expired Bearer token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
+    ComputerListResponse:
       type: object
       properties:
-        errorCode:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Computer'
+        number:
           type: integer
-        errorMessage:
+          description: Current page number
+        size:
+          type: integer
+          description: Page size
+        sort:
           type: string
+        totalElements:
+          type: integer
+          description: Total number of matching computers
+        totalPages:
+          type: integer
     Computer:
       type: object
       properties:
@@ -173,39 +199,13 @@ components:
         onlineStatus:
           type: integer
           description: Online status (1=online, 0=offline)
-    ComputerListResponse:
+    Error:
       type: object
       properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Computer'
-        number:
+        errorCode:
           type: integer
-          description: Current page number
-        size:
-          type: integer
-          description: Page size
-        sort:
+        errorMessage:
           type: string
-        totalElements:
-          type: integer
-          description: Total number of matching computers
-        totalPages:
-          type: integer
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized - missing or expired Bearer token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     BearerAuth:
       type: http
