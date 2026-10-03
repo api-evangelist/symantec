@@ -38,13 +38,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    AdminListResponse:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            type: object
     Error:
       type: object
       properties:
@@ -52,6 +45,13 @@ components:
           type: integer
         errorMessage:
           type: string
+    AdminListResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            type: object
   responses:
     Unauthorized:
       description: Unauthorized - missing or expired Bearer token
