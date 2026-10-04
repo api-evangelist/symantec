@@ -194,14 +194,14 @@ components:
         errorMessage:
           type: string
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - missing or expired Bearer token
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized - missing or expired Bearer token
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:

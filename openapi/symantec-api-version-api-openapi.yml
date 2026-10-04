@@ -37,14 +37,14 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Unauthorized - missing or expired Bearer token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-        errorMessage:
-          type: string
     ApiVersion:
       type: object
       properties:
@@ -53,13 +53,13 @@ components:
           description: API version string
         revision:
           type: integer
-  responses:
-    Unauthorized:
-      description: Unauthorized - missing or expired Bearer token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

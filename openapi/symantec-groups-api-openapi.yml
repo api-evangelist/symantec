@@ -89,6 +89,13 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    GroupListResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
     CreateGroupRequest:
       type: object
       required:
@@ -128,16 +135,9 @@ components:
           type: integer
         errorMessage:
           type: string
-    GroupListResponse:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
   responses:
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Bad request - invalid parameters
       content:
         application/json:
           schema:
@@ -148,8 +148,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request - invalid parameters
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
