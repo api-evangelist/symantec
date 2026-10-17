@@ -120,6 +120,13 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
     ComputerListResponse:
       type: object
       properties:
@@ -186,22 +193,15 @@ components:
         onlineStatus:
           type: integer
           description: Online status (1=online, 0=offline)
-    Error:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-        errorMessage:
-          type: string
   responses:
-    Unauthorized:
-      description: Unauthorized - missing or expired Bearer token
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - missing or expired Bearer token
       content:
         application/json:
           schema:

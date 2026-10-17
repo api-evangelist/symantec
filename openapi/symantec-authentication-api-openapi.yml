@@ -48,22 +48,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    AuthRequest:
-      type: object
-      required:
-      - username
-      - password
-      properties:
-        username:
-          type: string
-          description: SEPM administrator username
-        password:
-          type: string
-          format: password
-          description: SEPM administrator password
-        domain:
-          type: string
-          description: Domain name (can be empty string for default domain)
     AuthResponse:
       type: object
       properties:
@@ -84,6 +68,22 @@ components:
           type: integer
         errorMessage:
           type: string
+    AuthRequest:
+      type: object
+      required:
+      - username
+      - password
+      properties:
+        username:
+          type: string
+          description: SEPM administrator username
+        password:
+          type: string
+          format: password
+          description: SEPM administrator password
+        domain:
+          type: string
+          description: Domain name (can be empty string for default domain)
   responses:
     BadRequest:
       description: Bad request - invalid parameters
