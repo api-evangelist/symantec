@@ -36,6 +36,15 @@ tags:
 - Broadcom
 - Cybersecurity
 - DLP
+- Endpoint Detection and Response
+- Endpoint Security
+- Security
+- Symantec
+- Fortune 500
+tags_raw:
+- Broadcom
+- Cybersecurity
+- DLP
 - EDR
 - Endpoint Protection
 - Endpoint Security
@@ -81,6 +90,12 @@ apis:
     grant type.
   humanURL: https://apidocs.symantec.com/home/SymantecEDR_4.2
   tags:
+  - Endpoint Detection and Response
+  - Endpoint Security
+  - Forensics
+  - Incidents
+  - Threat Hunting
+  tags_raw:
   - EDR
   - Endpoint Security
   - Forensics
