@@ -192,6 +192,8 @@ apis:
   - type: Documentation
     url: https://apidocs.symantec.com/home/SAEP
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/symantec/overview
 - type: Plans
   url: plans/symantec-plans-pricing.yml
 - type: RateLimits
