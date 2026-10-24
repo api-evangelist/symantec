@@ -1,194 +1,170 @@
 {
+  "info": {
+    "_postman_id": "06c6bd9e-fdce-4f5d-a0b4-6ac8e4952d6c",
+    "name": "Symantec Endpoint Protection Manager Administrators API",
+    "description": "The Symantec Endpoint Protection Manager (SEPM) REST API provides programmatic access to manage endpoint protection infrastructure. Enables management of computers (endpoints), groups, policies, server administrators, API versioning, and device lifecycle operations. Authentication uses OAuth 2.0 with username/password credentials via the identity endpoint, returning a Bearer token for subsequent calls.\n\nContact Support:\n Name: Broadcom Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:26:07.000Z",
+    "updatedAt": "2026-10-21T20:26:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-06c6bd9e-fdce-4f5d-a0b4-6ac8e4952d6c"
+  },
   "item": [
     {
-      "id": "551708e3-2f69-48f7-ad24-3eefdeea427f",
-      "name": "Administrators",
-      "description": {
-        "content": "SEPM administrator account management",
-        "type": "text/plain"
-      },
+      "name": "admin",
       "item": [
         {
-          "id": "26d33e0b-2fd0-43dc-9e5d-b71337a4671a",
-          "name": "List Administrators",
-          "request": {
-            "name": "List Administrators",
-            "description": {
-              "content": "Retrieves a list of all administrator accounts configured in SEPM.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "admin",
-                "admins"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "SEPM server hostname or IP address",
-                  "type": "any",
-                  "value": "{{sepm-host}}",
-                  "key": "sepm-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "admins",
+          "item": [
             {
-              "id": "4c88d3b0-888c-42b2-b48a-475d87d62147",
-              "name": "List of administrators",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "admin",
-                    "admins"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "List Administrators",
+              "id": "e8c8977e-6a6a-4e7d-8f24-f83d06d00b62",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
                     {
-                      "description": "SEPM server hostname or IP address",
-                      "type": "any",
-                      "value": "{{sepm-host}}",
-                      "key": "sepm-host"
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
                     }
                   ]
                 },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "735076c9-48f1-49d8-a91d-8a14b6be0649",
-              "name": "Unauthorized - missing or expired Bearer token",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "admin",
-                    "admins"
-                  ],
+                  "raw": "{{baseUrl}}/admin/admins",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "SEPM server hostname or IP address",
-                      "type": "any",
-                      "value": "{{sepm-host}}",
-                      "key": "sepm-host"
-                    }
+                  "path": [
+                    "admin",
+                    "admins"
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieves a list of all administrator accounts configured in SEPM."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "7ce3908d-92ad-44e2-8c71-888ba9cef172",
+                  "name": "List of administrators",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/admin/admins",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "admins"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-10-21T20:26:08.000Z",
+                  "updatedAt": "2026-10-21T20:26:08.000Z",
+                  "uid": "35240-7ce3908d-92ad-44e2-8c71-888ba9cef172"
+                },
+                {
+                  "id": "a8ab85d4-54f5-4094-8c7f-3005bb0ae220",
+                  "name": "Unauthorized - missing or expired Bearer token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/admin/admins",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "admins"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:26:08.000Z",
+                  "updatedAt": "2026-10-21T20:26:08.000Z",
+                  "uid": "35240-a8ab85d4-54f5-4094-8c7f-3005bb0ae220"
                 }
               ],
-              "body": "{\n  \"errorCode\": 2960,\n  \"errorMessage\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:26:08.000Z",
+              "updatedAt": "2026-10-21T20:26:08.000Z",
+              "uid": "35240-e8c8977e-6a6a-4e7d-8f24-f83d06d00b62"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "5ecc924d-3894-4d92-903b-b1613fd24b18",
+          "createdAt": "2026-10-21T20:26:08.000Z",
+          "updatedAt": "2026-10-21T20:26:08.000Z",
+          "uid": "35240-5ecc924d-3894-4d92-903b-b1613fd24b18"
         }
       ],
-      "event": []
+      "id": "09181671-b2a0-45f7-b6f8-6d5b29e3950e",
+      "createdAt": "2026-10-21T20:26:08.000Z",
+      "updatedAt": "2026-10-21T20:26:08.000Z",
+      "uid": "35240-09181671-b2a0-45f7-b6f8-6d5b29e3950e"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "description": {
-        "content": "SEPM server hostname or IP address",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "localhost",
-      "key": "sepm-host"
+      "key": "sepm-host",
+      "value": "localhost"
     },
     {
-      "type": "string",
-      "value": "https://{{sepm-host}}:8446/sepm/api/v1",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://{{sepm-host}}:8446/sepm/api/v1"
     }
-  ],
-  "info": {
-    "_postman_id": "44433b92-b543-4604-8661-0dfd63aae3d8",
-    "name": "Symantec Endpoint Protection Manager Administrators API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Symantec Endpoint Protection Manager (SEPM) REST API provides programmatic access to manage endpoint protection infrastructure. Enables management of computers (endpoints), groups, policies, server administrators, API versioning, and device lifecycle operations. Authentication uses OAuth 2.0 with username/password credentials via the identity endpoint, returning a Bearer token for subsequent calls.\n\nContact Support:\n Name: Broadcom Support",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

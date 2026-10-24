@@ -1,194 +1,170 @@
 {
+  "info": {
+    "_postman_id": "d4ea692f-36b4-46a4-9405-7bd17bc643f0",
+    "name": "Symantec Endpoint Protection Manager API Version API",
+    "description": "The Symantec Endpoint Protection Manager (SEPM) REST API provides programmatic access to manage endpoint protection infrastructure. Enables management of computers (endpoints), groups, policies, server administrators, API versioning, and device lifecycle operations. Authentication uses OAuth 2.0 with username/password credentials via the identity endpoint, returning a Bearer token for subsequent calls.\n\nContact Support:\n Name: Broadcom Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:26:15.000Z",
+    "updatedAt": "2026-10-21T20:26:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d4ea692f-36b4-46a4-9405-7bd17bc643f0"
+  },
   "item": [
     {
-      "id": "0c46a27e-74f5-41cf-897e-5c067ef6a811",
-      "name": "API Version",
-      "description": {
-        "content": "API version information",
-        "type": "text/plain"
-      },
+      "name": "api-stats",
       "item": [
         {
-          "id": "3b846a52-d565-4a50-96f6-526d95d398e8",
-          "name": "Get API Version",
-          "request": {
-            "name": "Get API Version",
-            "description": {
-              "content": "Returns the current SEPM REST API version information.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api-stats",
-                "version"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "SEPM server hostname or IP address",
-                  "type": "any",
-                  "value": "{{sepm-host}}",
-                  "key": "sepm-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "version",
+          "item": [
             {
-              "id": "26387450-312b-4173-96a8-29fbfe73d46d",
-              "name": "API version information",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api-stats",
-                    "version"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "Get API Version",
+              "id": "cc5b8368-9624-4294-9c78-cf8825bf1d46",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
                     {
-                      "description": "SEPM server hostname or IP address",
-                      "type": "any",
-                      "value": "{{sepm-host}}",
-                      "key": "sepm-host"
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
                     }
                   ]
                 },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"version\": \"string\",\n  \"revision\": 3868\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "613c6eac-c4c9-475c-8331-6ca9772d153e",
-              "name": "Unauthorized - missing or expired Bearer token",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "api-stats",
-                    "version"
-                  ],
+                  "raw": "{{baseUrl}}/api-stats/version",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "SEPM server hostname or IP address",
-                      "type": "any",
-                      "value": "{{sepm-host}}",
-                      "key": "sepm-host"
-                    }
+                  "path": [
+                    "api-stats",
+                    "version"
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns the current SEPM REST API version information."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "2b113dda-7d54-4fca-99e2-669e05389cf8",
+                  "name": "API version information",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api-stats/version",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api-stats",
+                        "version"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"version\": \"<string>\",\n  \"revision\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-21T20:26:16.000Z",
+                  "updatedAt": "2026-10-21T20:26:16.000Z",
+                  "uid": "35240-2b113dda-7d54-4fca-99e2-669e05389cf8"
+                },
+                {
+                  "id": "aa70b19b-6e48-4ae5-868d-ff1b32435864",
+                  "name": "Unauthorized - missing or expired Bearer token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api-stats/version",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api-stats",
+                        "version"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:26:16.000Z",
+                  "updatedAt": "2026-10-21T20:26:16.000Z",
+                  "uid": "35240-aa70b19b-6e48-4ae5-868d-ff1b32435864"
                 }
               ],
-              "body": "{\n  \"errorCode\": 782,\n  \"errorMessage\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:26:16.000Z",
+              "updatedAt": "2026-10-21T20:26:16.000Z",
+              "uid": "35240-cc5b8368-9624-4294-9c78-cf8825bf1d46"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "3d88eb6d-26a6-45bb-b0b8-5bb49c05d5ce",
+          "createdAt": "2026-10-21T20:26:16.000Z",
+          "updatedAt": "2026-10-21T20:26:16.000Z",
+          "uid": "35240-3d88eb6d-26a6-45bb-b0b8-5bb49c05d5ce"
         }
       ],
-      "event": []
+      "id": "290a46c5-7b0e-4a98-9bfa-554f3c8bf530",
+      "createdAt": "2026-10-21T20:26:16.000Z",
+      "updatedAt": "2026-10-21T20:26:16.000Z",
+      "uid": "35240-290a46c5-7b0e-4a98-9bfa-554f3c8bf530"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "description": {
-        "content": "SEPM server hostname or IP address",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "localhost",
-      "key": "sepm-host"
+      "key": "sepm-host",
+      "value": "localhost"
     },
     {
-      "type": "string",
-      "value": "https://{{sepm-host}}:8446/sepm/api/v1",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://{{sepm-host}}:8446/sepm/api/v1"
     }
-  ],
-  "info": {
-    "_postman_id": "86a8b611-6ca4-4a5c-984a-ad0adb563147",
-    "name": "Symantec Endpoint Protection Manager Administrators API Version API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Symantec Endpoint Protection Manager (SEPM) REST API provides programmatic access to manage endpoint protection infrastructure. Enables management of computers (endpoints), groups, policies, server administrators, API versioning, and device lifecycle operations. Authentication uses OAuth 2.0 with username/password credentials via the identity endpoint, returning a Bearer token for subsequent calls.\n\nContact Support:\n Name: Broadcom Support",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
